@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
 import {
   ArrowRightLeft,
   Bell,
@@ -21,19 +20,19 @@ import {
   Sparkles,
   Wand2,
 } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Textarea } from '@/components/ui/textarea';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
+import { Button } from './components/ui/button';
+import { Input } from './components/ui/input';
+import { Badge } from './components/ui/badge';
+import { Tabs, TabsList, TabsTrigger } from './components/ui/tabs';
+import { Textarea } from './components/ui/textarea';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
+} from './components/ui/select';
 import {
   ResponsiveContainer,
   AreaChart,
@@ -347,7 +346,7 @@ function PublicHome() {
   return (
     <div className="space-y-8">
       <section className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}>
+        <div>
           <Card className="overflow-hidden rounded-[32px] border-0 bg-slate-950 text-white shadow-2xl">
             <CardContent className="p-8 md:p-10">
               <Badge className="mb-6 rounded-full bg-white/10 px-3 py-1 text-white hover:bg-white/10">Portale pubblico ERMES</Badge>
@@ -363,7 +362,7 @@ function PublicHome() {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
         <Card className="rounded-[32px] shadow-sm">
           <CardHeader>
             <CardTitle>Per chi è pensato</CardTitle>
