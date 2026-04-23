@@ -18,7 +18,6 @@ import { PublicAssistant } from "./pages/public/PublicAssistant";
 import { PublicMethod } from "./pages/public/PublicMethod";
 import { AppDashboard } from "./pages/app/AppDashboard";
 import { AdvancedResearch } from "./pages/app/AdvancedResearch";
-import { SourcesPanel } from "./pages/app/SourcesPanel";
 import { TechnologiesPanel } from "./pages/app/TechnologiesPanel";
 import { AppFontiManager } from "./pages/app/AppFontiManager";
 import { AppTecnologieManager } from "./pages/app/AppTecnologieManager";
@@ -192,10 +191,8 @@ export default function ERMESCloudDemoMockup() {
   const renderApp = () => {
     if (appPage === "dashboard") return <AppDashboard />;
     if (appPage === "research") return <AdvancedResearch />;
-    if (appPage === "sources") return <SourcesPanel />;
-    if (appPage === "sources-manager") return <AppFontiManager />;
-    if (appPage === "technologies") return <TechnologiesPanel />;
-    if (appPage === "technologies-manager") return <AppTecnologieManager />;
+    if (appPage === "sources") return <AppFontiManager />;
+    if (appPage === "technologies") return <AppTecnologieManager />;
     if (appPage === "components") return <TechnologiesPanel />;
     if (appPage === "evidence") return <EvidencePanel />;
     if (appPage === "editorial") return <EditorialPanel />;
