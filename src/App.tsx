@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { FEEM_LOGO } from "./data/mockData";
 import { AppSidebar } from "./components/navigation/AppSidebar";
@@ -10,6 +10,7 @@ import { PublicCompare } from "./pages/public/PublicCompare";
 import { PublicMarkets } from "./pages/public/PublicMarkets";
 import { PublicPublications } from "./pages/public/PublicPublications";
 import { PublicBlog } from "./pages/public/PublicBlog";
+import { PublicBlogDetail } from "./pages/public/PublicBlogDetail";
 import { PublicAssistant } from "./pages/public/PublicAssistant";
 import { PublicMethod } from "./pages/public/PublicMethod";
 import { AppDashboard } from "./pages/app/AppDashboard";
@@ -23,7 +24,32 @@ import { SettingsPanel } from "./pages/app/SettingsPanel";
 export default function ERMESCloudDemoMockup() {
   const [surface, setSurface] = useState<Surface>("public");
   const [publicPage, setPublicPage] = useState<PublicPage>("home");
+  const [selectedArticleSlug, setSelectedArticleSlug] = useState<string | null>(null);
   const [appPage, setAppPage] = useState<AppPage>("dashboard");
+
+  useEffect(() => {
+    const applyHashRoute = () => {
+      const hash = window.location.hash;
+
+      if (hash === "#blog") {
+        setSurface("public");
+        setPublicPage("blog");
+        setSelectedArticleSlug(null);
+        return;
+      }
+
+      if (hash.startsWith("#blog/")) {
+        const slug = decodeURIComponent(hash.replace("#blog/", "")).trim();
+        setSurface("public");
+        setPublicPage("blog-detail");
+        setSelectedArticleSlug(slug || null);
+      }
+    };
+
+    applyHashRoute();
+    window.addEventListener("hashchange", applyHashRoute);
+    return () => window.removeEventListener("hashchange", applyHashRoute);
+  }, []);
 
   const renderPublic = () => {
     if (publicPage === "home") return <PublicHome />;
@@ -31,7 +57,29 @@ export default function ERMESCloudDemoMockup() {
     if (publicPage === "compare") return <PublicCompare />;
     if (publicPage === "markets") return <PublicMarkets />;
     if (publicPage === "publications") return <PublicPublications />;
-    if (publicPage === "blog") return <PublicBlog />;
+    if (publicPage === "blog") {
+      return (
+        <PublicBlog
+          onOpenArticle={(articleSlug) => {
+            setSelectedArticleSlug(articleSlug);
+            setPublicPage("blog-detail");
+            window.location.hash = `blog/${encodeURIComponent(articleSlug)}`;
+          }}
+        />
+      );
+    }
+    if (publicPage === "blog-detail") {
+      return (
+        <PublicBlogDetail
+          articleSlug={selectedArticleSlug}
+          onBack={() => {
+            setPublicPage("blog");
+            setSelectedArticleSlug(null);
+            window.location.hash = "blog";
+          }}
+        />
+      );
+    }
     if (publicPage === "assistant") return <PublicAssistant />;
     return <PublicMethod />;
   };

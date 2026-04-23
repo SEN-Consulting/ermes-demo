@@ -13,7 +13,7 @@ export function AppSidebar({ appPage, setAppPage }: AppSidebarProps) {
       <div className="mb-4 rounded-2xl bg-slate-50 p-4">
         <div className="text-sm font-medium text-slate-950">Navigazione analista</div>
         <div className="mt-1 text-sm leading-6 text-slate-600">
-          Dashboard di monitoraggio e gestione della piattaforma con ricerca avanzata, fonti, evidenze, workflow editoriale e configurazione.
+          Dashboard di monitoraggio e gestione della piattaforma con ricerca avanzata, fonti, evidenze, blog e configurazione.
         </div>
       </div>
       <div className="space-y-2">

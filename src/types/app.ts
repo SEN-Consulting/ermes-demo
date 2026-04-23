@@ -5,6 +5,7 @@ export type PublicPage =
   | "markets"
   | "publications"
   | "blog"
+  | "blog-detail"
   | "assistant"
   | "method";
 

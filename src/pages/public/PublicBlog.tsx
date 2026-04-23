@@ -7,7 +7,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/ca
 import { blogTopics, publicArticles } from "../../data/mockData";
 import { BlogTopic } from "../../types/app";
 
-export function PublicBlog() {
+type PublicBlogProps = {
+  onOpenArticle: (articleSlug: string) => void;
+};
+
+export function PublicBlog({ onOpenArticle }: PublicBlogProps) {
   const [topic, setTopic] = useState<BlogTopic>("Tutti");
   const filteredArticles = useMemo(() => {
     if (topic === "Tutti") return publicArticles;
@@ -56,7 +60,13 @@ export function PublicBlog() {
             </CardHeader>
             <CardContent>
               <p className="text-sm leading-7 text-slate-600">{article.excerpt}</p>
-              <Button variant="ghost" className="mt-4 rounded-2xl px-0 text-slate-950 hover:bg-transparent">Leggi l'articolo <ChevronRight className="ml-1 h-4 w-4" /></Button>
+              <Button
+                variant="ghost"
+                className="mt-4 rounded-2xl px-0 text-slate-950 hover:bg-transparent"
+                onClick={() => onOpenArticle(article.slug)}
+              >
+                Leggi l'articolo <ChevronRight className="ml-1 h-4 w-4" />
+              </Button>
             </CardContent>
           </Card>
         ))}
