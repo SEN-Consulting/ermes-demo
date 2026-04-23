@@ -242,7 +242,6 @@ const navPublic = [
   { id: 'tech', label: 'Tecnologie' },
   { id: 'compare', label: 'Confronta' },
   { id: 'markets', label: 'Mercati di riferimento' },
-  { id: 'updates', label: 'Aggiornamenti' },
   { id: 'publications', label: 'Pubblicazioni' },
   { id: 'blog', label: 'Blog pubblico' },
   { id: 'assistant', label: 'Chatbot ERMES' },
@@ -593,62 +592,6 @@ function PublicMarkets() {
               'Tecnologie utili in paesi ricchi di rinnovabili ma con limitata capacità industriale',
             ].map((text) => (
               <div key={text} className="rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">{text}</div>
-            ))}
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  );
-}
-
-function PublicUpdates() {
-  return (
-    <div className="space-y-8">
-      <SectionHeader
-        eyebrow="Aggiornamenti"
-        title="Una parte dinamica che fa percepire ERMES come osservatorio vivo."
-        text="Questa vista anticipa la futura integrazione con il motore Python: filtri, periodi, fonti classificate, segnali deboli e casi studio."
-      />
-      <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
-        <Card className="rounded-[28px] shadow-sm">
-          <CardHeader>
-            <CardTitle>Trend di aggiornamento</CardTitle>
-            <CardDescription>Mockup di frequenza delle evidenze raccolte.</CardDescription>
-          </CardHeader>
-          <CardContent className="h-[320px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={[...timelineData]}>
-                <defs>
-                  <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#0f172a" stopOpacity={0.25} />
-                    <stop offset="95%" stopColor="#0f172a" stopOpacity={0.02} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Area type="monotone" dataKey="updates" stroke="#0f172a" fill="url(#grad1)" />
-              </AreaChart>
-            </ResponsiveContainer>
-          </CardContent>
-        </Card>
-        <Card className="rounded-[28px] shadow-sm">
-          <CardHeader>
-            <CardTitle>Archivio aggiornamenti</CardTitle>
-            <CardDescription>Filtri: tecnologia, fonte, periodo, geografia, tag, focus PVS.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {updates.map((u) => (
-              <div key={u.title} className="rounded-2xl border border-slate-200 p-4">
-                <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                  <Badge className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100">{u.tech}</Badge>
-                  <Badge variant="outline" className="rounded-full">{u.category}</Badge>
-                  <span>{u.date}</span>
-                </div>
-                <div className="mt-2 font-medium text-slate-950">{u.title}</div>
-                <div className="mt-1 text-sm leading-6 text-slate-600">Scheda aggiornamento con titolo, sintesi umana, tecnologia collegata, fonte, data, categoria, rilevanza e link al contenuto.</div>
-              </div>
             ))}
           </CardContent>
         </Card>
@@ -1227,7 +1170,6 @@ export default function ERMESCloudDemoMockup() {
     if (publicPage === 'tech') return <PublicTech />;
     if (publicPage === 'compare') return <PublicCompare />;
     if (publicPage === 'markets') return <PublicMarkets />;
-    if (publicPage === 'updates') return <PublicUpdates />;
     if (publicPage === 'publications') return <PublicPublications />;
     if (publicPage === 'blog') return <PublicBlog />;
     if (publicPage === 'assistant') return <PublicAssistant />;
