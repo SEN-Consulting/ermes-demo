@@ -8,7 +8,11 @@ import { Input } from "../../components/ui/input";
 import { techs } from "../../data/mockData";
 import { scoreColor } from "../../lib/scoreColor";
 
-export function PublicTech() {
+type PublicTechProps = {
+  onOpenTech?: (techSlug: string) => void;
+};
+
+export function PublicTech({ onOpenTech }: PublicTechProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const filtered = useMemo(() => {
     const q = searchTerm.trim().toLowerCase();
@@ -65,7 +69,17 @@ export function PublicTech() {
                   <Badge key={sector} className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100">{sector}</Badge>
                 ))}
               </div>
-              <Button className="rounded-2xl">Apri scheda tecnologia</Button>
+              <Button
+                className="rounded-2xl"
+                onClick={() => {
+                  if (onOpenTech) {
+                    onOpenTech(t.slug);
+                    window.location.hash = `tech/${encodeURIComponent(t.slug)}`;
+                  }
+                }}
+              >
+                Apri scheda tecnologia
+              </Button>
             </CardContent>
           </Card>
         ))}

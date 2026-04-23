@@ -6,17 +6,22 @@ import { PublicTopNav } from "./components/navigation/PublicTopNav";
 import { AppPage, PublicPage, Surface } from "./types/app";
 import { PublicHome } from "./pages/public/PublicHome";
 import { PublicTech } from "./pages/public/PublicTech";
+import { PublicTecnologieDetail } from "./pages/public/PublicTecnologieDetail";
 import { PublicCompare } from "./pages/public/PublicCompare";
 import { PublicMarkets } from "./pages/public/PublicMarkets";
 import { PublicPublications } from "./pages/public/PublicPublications";
+import { PublicFonti } from "./pages/public/PublicFonti";
 import { PublicBlog } from "./pages/public/PublicBlog";
 import { PublicBlogDetail } from "./pages/public/PublicBlogDetail";
+import { PublicFontiDetail } from "./pages/public/PublicFontiDetail";
 import { PublicAssistant } from "./pages/public/PublicAssistant";
 import { PublicMethod } from "./pages/public/PublicMethod";
 import { AppDashboard } from "./pages/app/AppDashboard";
 import { AdvancedResearch } from "./pages/app/AdvancedResearch";
 import { SourcesPanel } from "./pages/app/SourcesPanel";
 import { TechnologiesPanel } from "./pages/app/TechnologiesPanel";
+import { AppFontiManager } from "./pages/app/AppFontiManager";
+import { AppTecnologieManager } from "./pages/app/AppTecnologieManager";
 import { EvidencePanel } from "./pages/app/EvidencePanel";
 import { EditorialPanel } from "./pages/app/EditorialPanel";
 import { SettingsPanel } from "./pages/app/SettingsPanel";
@@ -25,6 +30,8 @@ export default function ERMESCloudDemoMockup() {
   const [surface, setSurface] = useState<Surface>("public");
   const [publicPage, setPublicPage] = useState<PublicPage>("home");
   const [selectedArticleSlug, setSelectedArticleSlug] = useState<string | null>(null);
+  const [selectedTechSlug, setSelectedTechSlug] = useState<string | null>(null);
+  const [selectedSourceSlug, setSelectedSourceSlug] = useState<string | null>(null);
   const [appPage, setAppPage] = useState<AppPage>("dashboard");
 
   useEffect(() => {
@@ -43,6 +50,37 @@ export default function ERMESCloudDemoMockup() {
         setSurface("public");
         setPublicPage("blog-detail");
         setSelectedArticleSlug(slug || null);
+        return;
+      }
+
+      if (hash === "#tech") {
+        setSurface("public");
+        setPublicPage("tech");
+        setSelectedTechSlug(null);
+        return;
+      }
+
+      if (hash.startsWith("#tech/")) {
+        const slug = decodeURIComponent(hash.replace("#tech/", "")).trim();
+        setSurface("public");
+        setPublicPage("tech-detail");
+        setSelectedTechSlug(slug || null);
+        return;
+      }
+
+      if (hash === "#fonti") {
+        setSurface("public");
+        setPublicPage("fonti");
+        setSelectedSourceSlug(null);
+        return;
+      }
+
+      if (hash.startsWith("#fonti/")) {
+        const slug = decodeURIComponent(hash.replace("#fonti/", "")).trim();
+        setSurface("public");
+        setPublicPage("fonti-detail");
+        setSelectedSourceSlug(slug || null);
+        return;
       }
     };
 
@@ -53,10 +91,77 @@ export default function ERMESCloudDemoMockup() {
 
   const renderPublic = () => {
     if (publicPage === "home") return <PublicHome />;
-    if (publicPage === "tech") return <PublicTech />;
+    if (publicPage === "tech") {
+      if (selectedTechSlug) {
+        return (
+          <PublicTecnologieDetail
+            techSlug={selectedTechSlug}
+            onBack={() => {
+              setPublicPage("tech");
+              setSelectedTechSlug(null);
+              window.location.hash = "tech";
+            }}
+          />
+        );
+      }
+      return (
+        <PublicTech
+          onOpenTech={(techSlug) => {
+            setSelectedTechSlug(techSlug);
+            setPublicPage("tech-detail");
+          }}
+        />
+      );
+    }
+    if (publicPage === "tech-detail") {
+      return (
+        <PublicTecnologieDetail
+          techSlug={selectedTechSlug}
+          onBack={() => {
+            setPublicPage("tech");
+            setSelectedTechSlug(null);
+            window.location.hash = "tech";
+          }}
+        />
+      );
+    }
     if (publicPage === "compare") return <PublicCompare />;
     if (publicPage === "markets") return <PublicMarkets />;
     if (publicPage === "publications") return <PublicPublications />;
+    if (publicPage === "fonti") {
+      if (selectedSourceSlug) {
+        return (
+          <PublicFontiDetail
+            sourceSlug={selectedSourceSlug}
+            onBack={() => {
+              setPublicPage("fonti");
+              setSelectedSourceSlug(null);
+              window.location.hash = "fonti";
+            }}
+          />
+        );
+      }
+      return (
+        <PublicFonti
+          onOpenSource={(sourceSlug) => {
+            setSelectedSourceSlug(sourceSlug);
+            setPublicPage("fonti-detail");
+          }}
+        />
+      );
+    }
+    if (publicPage === "fonti-detail") {
+      return (
+        <PublicFontiDetail
+          sourceSlug={selectedSourceSlug}
+          onBack={() => {
+            setPublicPage("fonti");
+            setSelectedSourceSlug(null);
+            window.location.hash = "fonti";
+          }}
+        />
+      );
+    }
     if (publicPage === "blog") {
       return (
         <PublicBlog
@@ -88,7 +193,10 @@ export default function ERMESCloudDemoMockup() {
     if (appPage === "dashboard") return <AppDashboard />;
     if (appPage === "research") return <AdvancedResearch />;
     if (appPage === "sources") return <SourcesPanel />;
-    if (appPage === "technologies" || appPage === "components") return <TechnologiesPanel />;
+    if (appPage === "sources-manager") return <AppFontiManager />;
+    if (appPage === "technologies") return <TechnologiesPanel />;
+    if (appPage === "technologies-manager") return <AppTecnologieManager />;
+    if (appPage === "components") return <TechnologiesPanel />;
     if (appPage === "evidence") return <EvidencePanel />;
     if (appPage === "editorial") return <EditorialPanel />;
     return <SettingsPanel />;
