@@ -3,7 +3,10 @@ import React from "react";
 type DivProps = React.HTMLAttributes<HTMLDivElement>;
 
 export function Card({ className = "", ...props }: DivProps) {
-  return <div className={`border border-slate-200 bg-white ${className}`.trim()} {...props} />;
+  const base = className.includes("bg-")
+    ? `border border-slate-200 ${className}`
+    : `border border-slate-200 bg-white ${className}`;
+  return <div className={base.trim()} {...props} />;
 }
 
 export function CardHeader({ className = "", ...props }: DivProps) {
