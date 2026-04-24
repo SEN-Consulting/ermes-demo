@@ -3,6 +3,8 @@ export type PublicPage =
   | "executive"
   | "tech"
   | "tech-detail"
+  | "componenti"
+  | "componenti-detail"
   | "compare"
   | "markets"
   | "publications"

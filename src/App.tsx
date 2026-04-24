@@ -17,6 +17,8 @@ import { PublicFontiDetail } from "./pages/public/PublicFontiDetail";
 import { PublicAssistant } from "./pages/public/PublicAssistant";
 import { PublicMethod } from "./pages/public/PublicMethod";
 import { PublicExecutive } from "./pages/public/PublicExecutive";
+import { PublicComponenti } from "./pages/public/PublicComponenti";
+import { PublicComponenteDetail } from "./pages/public/PublicComponenteDetail";
 import { AppDashboard } from "./pages/app/AppDashboard";
 import { AdvancedResearch } from "./pages/app/AdvancedResearch";
 import { TechnologiesPanel } from "./pages/app/TechnologiesPanel";
@@ -32,6 +34,7 @@ export default function ERMESCloudDemoMockup() {
   const [selectedArticleSlug, setSelectedArticleSlug] = useState<string | null>(null);
   const [selectedTechSlug, setSelectedTechSlug] = useState<string | null>(null);
   const [selectedSourceSlug, setSelectedSourceSlug] = useState<string | null>(null);
+  const [selectedCompId, setSelectedCompId] = useState<string | null>(null);
   const [appPage, setAppPage] = useState<AppPage>("dashboard");
 
   useEffect(() => {
@@ -82,6 +85,21 @@ export default function ERMESCloudDemoMockup() {
         setSelectedSourceSlug(slug || null);
         return;
       }
+
+      if (hash === "#componenti") {
+        setSurface("public");
+        setPublicPage("componenti");
+        setSelectedCompId(null);
+        return;
+      }
+
+      if (hash.startsWith("#componenti/")) {
+        const id = decodeURIComponent(hash.replace("#componenti/", "")).trim();
+        setSurface("public");
+        setPublicPage("componenti-detail");
+        setSelectedCompId(id || null);
+        return;
+      }
     };
 
     applyHashRoute();
@@ -129,6 +147,40 @@ export default function ERMESCloudDemoMockup() {
     if (publicPage === "compare") return <PublicCompare />;
     if (publicPage === "markets") return <PublicMarkets />;
     if (publicPage === "publications") return <PublicPublications />;
+    if (publicPage === "componenti") {
+      if (selectedCompId) {
+        return (
+          <PublicComponenteDetail
+            compId={selectedCompId}
+            onBack={() => {
+              setPublicPage("componenti");
+              setSelectedCompId(null);
+              window.location.hash = "componenti";
+            }}
+          />
+        );
+      }
+      return (
+        <PublicComponenti
+          onOpenComponente={(compId) => {
+            setSelectedCompId(compId);
+            setPublicPage("componenti-detail");
+          }}
+        />
+      );
+    }
+    if (publicPage === "componenti-detail") {
+      return (
+        <PublicComponenteDetail
+          compId={selectedCompId}
+          onBack={() => {
+            setPublicPage("componenti");
+            setSelectedCompId(null);
+            window.location.hash = "componenti";
+          }}
+        />
+      );
+    }
     if (publicPage === "fonti") {
       if (selectedSourceSlug) {
         return (

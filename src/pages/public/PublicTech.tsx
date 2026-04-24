@@ -50,7 +50,19 @@ export function PublicTech({ onOpenTech }: PublicTechProps) {
             <CardHeader>
               <div className="flex items-center justify-between gap-3">
                 <div>
-                  <CardTitle>{t.name}</CardTitle>
+                  <CardTitle>
+                    <button
+                      className="hover:text-blue-700 hover:underline text-left"
+                      onClick={() => {
+                        if (onOpenTech) {
+                          onOpenTech(t.slug);
+                          window.location.hash = `tech/${encodeURIComponent(t.slug)}`;
+                        }
+                      }}
+                    >
+                      {t.name}
+                    </button>
+                  </CardTitle>
                   <CardDescription>{t.family} • Score {t.score}/100</CardDescription>
                 </div>
                 <span className={`rounded-full px-3 py-1 text-xs font-semibold ${t.semaforo === 'VERDE' ? 'bg-emerald-100 text-emerald-800' : t.semaforo === 'GIALLO' ? 'bg-amber-100 text-amber-800' : 'bg-red-100 text-red-800'}`}>{t.semaforo}</span>

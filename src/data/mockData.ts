@@ -288,6 +288,7 @@ export const navPublic = [
   { id: "home", label: "Home" },
   { id: "executive", label: "Executive" },
   { id: "tech", label: "Tecnologie" },
+  { id: "componenti", label: "Componenti" },
   { id: "compare", label: "Confronta" },
   { id: "markets", label: "Mercati di riferimento" },
   { id: "fonti", label: "Fonti" },

@@ -99,7 +99,19 @@ export function PublicFonti({ onOpenSource }: PublicFontiProps) {
               <div className="flex flex-col justify-between gap-4 md:flex-row md:items-start">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-lg font-semibold text-slate-950">{source.name}</h3>
+                    <h3 className="text-lg font-semibold text-slate-950">
+                      <button
+                        className="hover:text-blue-700 hover:underline text-left"
+                        onClick={() => {
+                          if (onOpenSource) {
+                            onOpenSource(source.slug);
+                            window.location.hash = `fonti/${encodeURIComponent(source.slug)}`;
+                          }
+                        }}
+                      >
+                        {source.name}
+                      </button>
+                    </h3>
                     <Badge className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100">
                       {source.type}
                     </Badge>

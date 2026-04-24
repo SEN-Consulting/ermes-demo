@@ -136,7 +136,9 @@ export function PublicTecnologieDetail({ techSlug, onBack }: PublicTecnologieDet
               <CardContent className="p-5">
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <div>
-                    <div className="font-medium text-slate-950">{c.nome}</div>
+                    <div className="font-medium text-slate-950">
+                      <a href={`#componenti/${encodeURIComponent(c.compId)}`} className="hover:text-blue-700 hover:underline">{c.nome}</a>
+                    </div>
                     <div className="text-xs text-slate-400">{c.macrocomponente}</div>
                   </div>
                   <Badge variant="outline" className="rounded-full text-xs">{c.stato}</Badge>
