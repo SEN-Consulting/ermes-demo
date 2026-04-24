@@ -27,6 +27,8 @@ import { AppTecnologieManager } from "./pages/app/AppTecnologieManager";
 import { EvidencePanel } from "./pages/app/EvidencePanel";
 import { EditorialPanel } from "./pages/app/EditorialPanel";
 import { SettingsPanel } from "./pages/app/SettingsPanel";
+import { AppTecnologieDetail } from "./pages/app/AppTecnologieDetail";
+import { AppComponenteDetail } from "./pages/app/AppComponenteDetail";
 
 export default function ERMESCloudDemoMockup() {
   const [surface, setSurface] = useState<Surface>("public");
@@ -36,6 +38,8 @@ export default function ERMESCloudDemoMockup() {
   const [selectedSourceSlug, setSelectedSourceSlug] = useState<string | null>(null);
   const [selectedCompId, setSelectedCompId] = useState<string | null>(null);
   const [appPage, setAppPage] = useState<AppPage>("dashboard");
+  const [appSelectedTechId, setAppSelectedTechId] = useState<string | null>(null);
+  const [appSelectedCompId, setAppSelectedCompId] = useState<string | null>(null);
 
   useEffect(() => {
     const applyHashRoute = () => {
@@ -246,8 +250,37 @@ export default function ERMESCloudDemoMockup() {
     if (appPage === "dashboard") return <AppDashboard />;
     if (appPage === "research") return <AdvancedResearch />;
     if (appPage === "sources") return <AppFontiManager />;
-    if (appPage === "technologies") return <AppTecnologieManager />;
-    if (appPage === "components") return <TechnologiesPanel />;
+    if (appPage === "technologies") {
+      if (appSelectedTechId) {
+        return (
+          <AppTecnologieDetail
+            techId={appSelectedTechId}
+            onBack={() => setAppSelectedTechId(null)}
+            onOpenComponente={(compId) => {
+              setAppSelectedCompId(compId);
+              setAppPage("components");
+            }}
+          />
+        );
+      }
+      return <AppTecnologieManager onOpenTech360={(techId) => setAppSelectedTechId(techId)} />;
+    }
+    if (appPage === "components") {
+      if (appSelectedCompId) {
+        return (
+          <AppComponenteDetail
+            compId={appSelectedCompId}
+            onBack={() => setAppSelectedCompId(null)}
+            onOpenTech={(techId) => {
+              setAppSelectedTechId(techId);
+              setAppPage("technologies");
+            }}
+            onOpenComponente={(compId) => setAppSelectedCompId(compId)}
+          />
+        );
+      }
+      return <TechnologiesPanel onOpenTech360={(techId) => { setAppSelectedTechId(techId); setAppPage("technologies"); }} onOpenComponente={(compId) => setAppSelectedCompId(compId)} />;
+    }
     if (appPage === "evidence") return <EvidencePanel />;
     if (appPage === "editorial") return <EditorialPanel />;
     return <SettingsPanel />;
@@ -282,7 +315,7 @@ export default function ERMESCloudDemoMockup() {
         </>
       ) : (
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 md:px-6 xl:grid-cols-[260px_1fr]">
-          <AppSidebar appPage={appPage} setAppPage={setAppPage} />
+          <AppSidebar appPage={appPage} setAppPage={(p) => { setAppPage(p); setAppSelectedTechId(null); setAppSelectedCompId(null); }} />
           <main className="space-y-6">{renderApp()}</main>
         </div>
       )}

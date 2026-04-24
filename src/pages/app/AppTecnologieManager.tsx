@@ -29,7 +29,7 @@ interface ManagedTech {
   sectors: string[];
 }
 
-export function AppTecnologieManager() {
+export function AppTecnologieManager({ onOpenTech360 }: { onOpenTech360?: (techId: string) => void }) {
   const [technologies, setTechnologies] = useState<ManagedTech[]>(() => {
     return (techs as unknown as ManagedTech[]).map((t) => ({
       ...t,
@@ -158,6 +158,16 @@ export function AppTecnologieManager() {
                     </div>
                   </div>
                   <div className="ml-4 flex gap-2">
+                    {onOpenTech360 && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="rounded-lg"
+                        onClick={() => onOpenTech360(tech.id)}
+                      >
+                        360°
+                      </Button>
+                    )}
                     <Button
                       size="sm"
                       variant="outline"
