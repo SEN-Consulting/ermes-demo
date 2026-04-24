@@ -6,7 +6,6 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
 import { Input } from "../../components/ui/input";
 import { techs } from "../../data/mockData";
-import { scoreColor } from "../../lib/scoreColor";
 
 type PublicTechProps = {
   onOpenTech?: (techSlug: string) => void;
@@ -17,7 +16,7 @@ export function PublicTech({ onOpenTech }: PublicTechProps) {
   const filtered = useMemo(() => {
     const q = searchTerm.trim().toLowerCase();
     if (!q) return techs;
-    return techs.filter((t) => [t.name, t.family, t.market, t.summary].join(" ").toLowerCase().includes(q));
+    return techs.filter((t) => [t.name, t.family, t.summary].join(" ").toLowerCase().includes(q));
   }, [searchTerm]);
 
   return (
@@ -52,17 +51,17 @@ export function PublicTech({ onOpenTech }: PublicTechProps) {
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <CardTitle>{t.name}</CardTitle>
-                  <CardDescription>{t.family} • {t.market}</CardDescription>
+                  <CardDescription>{t.family} • Score {t.score}/100</CardDescription>
                 </div>
-                <span className={`rounded-full px-3 py-1 text-xs font-semibold ${scoreColor(t.score)}`}>{t.score}/100</span>
+                <span className={`rounded-full px-3 py-1 text-xs font-semibold ${t.semaforo === 'VERDE' ? 'bg-emerald-100 text-emerald-800' : t.semaforo === 'GIALLO' ? 'bg-amber-100 text-amber-800' : 'bg-red-100 text-red-800'}`}>{t.semaforo}</span>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <p className="text-sm leading-7 text-slate-600">{t.summary}</p>
               <div className="grid gap-3 md:grid-cols-3">
-                <div className="rounded-2xl bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.2em] text-slate-400">Maturita</div><div className="mt-2 text-lg font-semibold">{t.maturity}</div></div>
-                <div className="rounded-2xl bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.2em] text-slate-400">Applicabilita PVS</div><div className="mt-2 text-lg font-semibold">{t.pvs}</div></div>
-                <div className="rounded-2xl bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.2em] text-slate-400">Policy fit</div><div className="mt-2 text-lg font-semibold">{t.policy}/100</div></div>
+                <div className="rounded-2xl bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.2em] text-slate-400">Score</div><div className="mt-2 text-lg font-semibold">{t.score}/100</div></div>
+                <div className="rounded-2xl bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.2em] text-slate-400">Ranking</div><div className="mt-2 text-lg font-semibold">#{t.rank}</div></div>
+                <div className="rounded-2xl bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.2em] text-slate-400">Posizionamento</div><div className="mt-2 text-lg font-semibold">{t.posizionamento}</div></div>
               </div>
               <div className="flex flex-wrap gap-2">
                 {t.sectors.map((sector) => (

@@ -16,6 +16,7 @@ import { PublicBlogDetail } from "./pages/public/PublicBlogDetail";
 import { PublicFontiDetail } from "./pages/public/PublicFontiDetail";
 import { PublicAssistant } from "./pages/public/PublicAssistant";
 import { PublicMethod } from "./pages/public/PublicMethod";
+import { PublicExecutive } from "./pages/public/PublicExecutive";
 import { AppDashboard } from "./pages/app/AppDashboard";
 import { AdvancedResearch } from "./pages/app/AdvancedResearch";
 import { TechnologiesPanel } from "./pages/app/TechnologiesPanel";
@@ -90,6 +91,7 @@ export default function ERMESCloudDemoMockup() {
 
   const renderPublic = () => {
     if (publicPage === "home") return <PublicHome />;
+    if (publicPage === "executive") return <PublicExecutive />;
     if (publicPage === "tech") {
       if (selectedTechSlug) {
         return (

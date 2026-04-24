@@ -1,5 +1,5 @@
 import { Boxes, Cpu, FileText, Globe2 } from "lucide-react";
-import { techs, updates } from "../../data/mockData";
+import { techs, sourceRows, updates } from "../../data/mockData";
 import { scoreColor } from "../../lib/scoreColor";
 import { MetricCard } from "../../components/shared/MetricCard";
 import { Badge } from "../../components/ui/badge";
@@ -48,9 +48,9 @@ export function PublicHome() {
       </section>
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <MetricCard label="Tecnologie monitorate" value="11+" hint="portfolio base ERMES" icon={Cpu} />
-        <MetricCard label="Componenti / sottosistemi" value="40+" hint="mappati per tecnologia" icon={Boxes} />
-        <MetricCard label="Fonti classificate" value="30+" hint="istituzionali, media, database" icon={Globe2} />
+        <MetricCard label="Tecnologie monitorate" value={`${techs.length}`} hint="portfolio ERMES completo" icon={Cpu} />
+        <MetricCard label="Componenti / sottosistemi" value="44+" hint="mappati per tecnologia" icon={Boxes} />
+        <MetricCard label="Fonti classificate" value={`${sourceRows.length}`} hint="istituzionali, media, database" icon={Globe2} />
         <MetricCard label="Output editoriali" value="Report • Brief • Newsletter" hint="disseminazione continua" icon={FileText} />
       </section>
 
@@ -61,14 +61,14 @@ export function PublicHome() {
             <CardDescription>Card sintetiche leggibili anche da un utente non tecnico.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-2">
-            {techs.slice(0, 4).map((t) => (
+            {[...techs].sort((a, b) => a.rank - b.rank).slice(0, 4).map((t) => (
               <div key={t.id} className="rounded-2xl border border-slate-200 p-4">
                 <div className="flex items-start justify-between gap-3">
                   <div>
                     <div className="font-medium text-slate-950">{t.name}</div>
-                    <div className="text-sm text-slate-500">{t.family}</div>
+                    <div className="text-sm text-slate-500">{t.family} • #{t.rank}</div>
                   </div>
-                  <span className={`rounded-full px-3 py-1 text-xs font-semibold ${scoreColor(t.score)}`}>{t.score}/100</span>
+                  <span className={`rounded-full px-3 py-1 text-xs font-semibold ${t.semaforo === 'VERDE' ? 'bg-emerald-100 text-emerald-800' : t.semaforo === 'GIALLO' ? 'bg-amber-100 text-amber-800' : 'bg-red-100 text-red-800'}`}>{t.score}/100</span>
                 </div>
                 <p className="mt-3 text-sm leading-6 text-slate-600">{t.summary}</p>
               </div>

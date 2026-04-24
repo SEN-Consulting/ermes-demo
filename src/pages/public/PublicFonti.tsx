@@ -17,6 +17,10 @@ export function PublicFonti({ onOpenSource }: PublicFontiProps) {
     slug: string;
     name: string;
     type: string;
+    organizzazione: string;
+    affidabilita: string;
+    copertura: string;
+    accesso: string;
     description: string;
     strategy: string;
     priority: string;

@@ -76,6 +76,10 @@ export function PublicFontiDetail({ sourceSlug, onBack }: PublicFontiDetailProps
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
+                <div className="text-xs font-medium text-slate-500 uppercase">Organizzazione</div>
+                <div className="mt-1 text-slate-900">{source.organizzazione}</div>
+              </div>
+              <div>
                 <div className="text-xs font-medium text-slate-500 uppercase">Tipo di fonte</div>
                 <div className="mt-1 text-slate-900">{source.type}</div>
               </div>
@@ -119,6 +123,18 @@ export function PublicFontiDetail({ sourceSlug, onBack }: PublicFontiDetailProps
               <div>
                 <div className="text-xs font-medium text-slate-500 uppercase">Frequenza di aggiornamento</div>
                 <div className="mt-1 text-slate-900">{source.strategy}</div>
+              </div>
+              <div>
+                <div className="text-xs font-medium text-slate-500 uppercase">Affidabilita</div>
+                <div className="mt-1 text-slate-900">{source.affidabilita}</div>
+              </div>
+              <div>
+                <div className="text-xs font-medium text-slate-500 uppercase">Copertura</div>
+                <div className="mt-1 text-slate-900">{source.copertura}</div>
+              </div>
+              <div>
+                <div className="text-xs font-medium text-slate-500 uppercase">Accesso</div>
+                <div className="mt-1 text-slate-900">{source.accesso}</div>
               </div>
             </CardContent>
           </Card>

@@ -17,15 +17,15 @@ export function PublicMarkets() {
             <CardDescription>Aiuta a capire subito la differenza fra tecnologie buone in generale e tecnologie adatte al contesto.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            {techs.slice(0, 5).map((t) => (
+            {techs.slice(0, 8).map((t) => (
               <div key={t.id} className="grid gap-3 rounded-2xl border border-slate-200 p-4 md:grid-cols-[1fr_0.9fr_0.8fr_1.2fr] md:items-center">
                 <div>
                   <div className="font-medium text-slate-950">{t.name}</div>
                   <div className="text-sm text-slate-500">{t.family}</div>
                 </div>
-                <div className="text-sm"><span className="font-medium text-slate-950">Mercato:</span> {t.market}</div>
-                <div className="text-sm"><span className="font-medium text-slate-950">PVS:</span> {t.pvs}</div>
-                <div className="text-sm leading-6 text-slate-600">Prerequisiti, intensita di capitale e capacita tecnica locale disponibili in scheda dettaglio.</div>
+                <div className="text-sm"><span className="font-medium text-slate-950">Score:</span> {t.score}/100</div>
+                <div className="text-sm"><span className="font-medium text-slate-950">Posiz.:</span> {t.posizionamento}</div>
+                <div className="text-sm leading-6 text-slate-600">{t.raccomandazione}</div>
               </div>
             ))}
           </CardContent>

@@ -7,25 +7,26 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/ca
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
 import { techs } from "../../data/mockData";
-import { scoreColor } from "../../lib/scoreColor";
+
 
 interface ManagedTech {
   id: string;
   slug: string;
   name: string;
   family: string;
-  maturity: string;
-  market: string;
-  pvs: string;
-  policy: number;
+  maturity: number;
+  readiness: number;
   competitiveness: number;
   sustainability: number;
+  coverage: number;
   score: number;
+  rank: number;
+  semaforo: string;
+  posizionamento: string;
+  raccomandazione: string;
   summary: string;
   description: string;
   sectors: string[];
-  deployment: string;
-  challenges: string[];
 }
 
 export function AppTecnologieManager() {
@@ -33,7 +34,6 @@ export function AppTecnologieManager() {
     return (techs as unknown as ManagedTech[]).map((t) => ({
       ...t,
       sectors: Array.from(t.sectors) as string[],
-      challenges: Array.from(t.challenges) as string[],
     }));
   });
   const [mode, setMode] = useState<"list" | "create" | "edit">("list");
@@ -44,15 +44,17 @@ export function AppTecnologieManager() {
     setMode("create");
     const initialForm: Partial<ManagedTech> = {
       family: "Rinnovabili",
-      maturity: "Alta",
-      market: "Globale",
-      pvs: "Alto",
-      policy: 80,
-      competitiveness: 80,
-      sustainability: 80,
-      score: 80,
+      maturity: 80,
+      readiness: 50,
+      competitiveness: 50,
+      sustainability: 50,
+      coverage: 91.7,
+      score: 60,
+      rank: 12,
+      semaforo: "GIALLO",
+      posizionamento: "Selettiva",
+      raccomandazione: "SELEZIONARE-PILOTARE",
       sectors: [],
-      challenges: [],
     };
     setFormData(initialForm);
   };
@@ -76,18 +78,19 @@ export function AppTecnologieManager() {
         slug: form.slug,
         name: form.name,
         family: form.family || "Rinnovabili",
-        maturity: form.maturity || "Alta",
-        market: form.market || "Globale",
-        pvs: form.pvs || "Alto",
-        policy: form.policy || 80,
-        competitiveness: form.competitiveness || 80,
-        sustainability: form.sustainability || 80,
-        score: form.score || 80,
+        maturity: form.maturity || 80,
+        readiness: form.readiness || 50,
+        competitiveness: form.competitiveness || 50,
+        sustainability: form.sustainability || 50,
+        coverage: form.coverage || 91.7,
+        score: form.score || 60,
+        rank: form.rank || 12,
+        semaforo: form.semaforo || "GIALLO",
+        posizionamento: form.posizionamento || "Selettiva",
+        raccomandazione: form.raccomandazione || "SELEZIONARE-PILOTARE",
         summary: form.summary || "",
         description: form.description || "",
         sectors: form.sectors || [],
-        deployment: form.deployment || "",
-        challenges: form.challenges || [],
       };
       setTechnologies([...technologies, newTech]);
     } else if (editingId) {
@@ -98,7 +101,6 @@ export function AppTecnologieManager() {
                 ...t,
                 ...formData,
                 sectors: formData.sectors || t.sectors,
-                challenges: formData.challenges || t.challenges,
               }
             : t
         )
@@ -144,7 +146,7 @@ export function AppTecnologieManager() {
                       <Badge className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100">
                         {tech.family}
                       </Badge>
-                      <Badge className={`rounded-full ${scoreColor(tech.score)}`}>{tech.score}</Badge>
+                      <Badge className={`rounded-full ${tech.semaforo === "VERDE" ? "bg-green-100 text-green-800" : tech.semaforo === "ROSSO" ? "bg-red-100 text-red-800" : "bg-yellow-100 text-yellow-800"}`}>{tech.score}</Badge>
                     </div>
                     <p className="mt-2 text-sm text-slate-600">{tech.summary}</p>
                     <div className="mt-3 flex flex-wrap gap-2">
@@ -253,94 +255,114 @@ export function AppTecnologieManager() {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-slate-900">Maturita</label>
+              <label className="block text-sm font-medium text-slate-900">Maturita (0-100)</label>
               <Input
                 className="mt-2 rounded-lg"
-                placeholder="Es. Media-Alta"
-                value={formData.maturity || ""}
-                onChange={(e) => setFormData({ ...formData, maturity: e.target.value })}
-              />
-            </div>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            <div>
-              <label className="block text-sm font-medium text-slate-900">Mercato</label>
-              <Input
-                className="mt-2 rounded-lg"
-                placeholder="Es. Globale"
-                value={formData.market || ""}
-                onChange={(e) => setFormData({ ...formData, market: e.target.value })}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-900">PVS fit</label>
-              <Input
-                className="mt-2 rounded-lg"
-                placeholder="Es. Alto"
-                value={formData.pvs || ""}
-                onChange={(e) => setFormData({ ...formData, pvs: e.target.value })}
+                type="number" min="0" max="100"
+                value={formData.maturity || 80}
+                onChange={(e) => setFormData({ ...formData, maturity: parseFloat(e.target.value) })}
               />
             </div>
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
             <div>
-              <label className="block text-sm font-medium text-slate-900">Policy (0-100)</label>
+              <label className="block text-sm font-medium text-slate-900">Readiness (0-100)</label>
               <Input
                 className="mt-2 rounded-lg"
-                type="number"
-                min="0"
-                max="100"
-                value={formData.policy || 80}
-                onChange={(e) => setFormData({ ...formData, policy: parseInt(e.target.value) })}
+                type="number" min="0" max="100"
+                value={formData.readiness || 50}
+                onChange={(e) => setFormData({ ...formData, readiness: parseFloat(e.target.value) })}
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-900">Competitivita (0-100)</label>
               <Input
                 className="mt-2 rounded-lg"
-                type="number"
-                min="0"
-                max="100"
-                value={formData.competitiveness || 80}
-                onChange={(e) => setFormData({ ...formData, competitiveness: parseInt(e.target.value) })}
+                type="number" min="0" max="100"
+                value={formData.competitiveness || 50}
+                onChange={(e) => setFormData({ ...formData, competitiveness: parseFloat(e.target.value) })}
               />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-900">Sostenibilita (0-100)</label>
               <Input
                 className="mt-2 rounded-lg"
-                type="number"
-                min="0"
-                max="100"
-                value={formData.sustainability || 80}
-                onChange={(e) => setFormData({ ...formData, sustainability: parseInt(e.target.value) })}
+                type="number" min="0" max="100"
+                value={formData.sustainability || 50}
+                onChange={(e) => setFormData({ ...formData, sustainability: parseFloat(e.target.value) })}
               />
             </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-slate-900">Score complessivo (0-100)</label>
-            <Input
-              className="mt-2 rounded-lg"
-              type="number"
-              min="0"
-              max="100"
-              value={formData.score || 80}
-              onChange={(e) => setFormData({ ...formData, score: parseInt(e.target.value) })}
-            />
+          <div className="grid gap-6 md:grid-cols-3">
+            <div>
+              <label className="block text-sm font-medium text-slate-900">Score complessivo (0-100)</label>
+              <Input
+                className="mt-2 rounded-lg"
+                type="number" min="0" max="100"
+                value={formData.score || 60}
+                onChange={(e) => setFormData({ ...formData, score: parseFloat(e.target.value) })}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-900">Coverage (0-100)</label>
+              <Input
+                className="mt-2 rounded-lg"
+                type="number" min="0" max="100"
+                value={formData.coverage || 91.7}
+                onChange={(e) => setFormData({ ...formData, coverage: parseFloat(e.target.value) })}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-900">Rank</label>
+              <Input
+                className="mt-2 rounded-lg"
+                type="number" min="1"
+                value={formData.rank || 12}
+                onChange={(e) => setFormData({ ...formData, rank: parseInt(e.target.value) })}
+              />
+            </div>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-slate-900">Status di deployment</label>
-            <Textarea
-              className="mt-2 rounded-lg"
-              placeholder="Es. 65 GW installati globalmente nel 2025"
-              rows={2}
-              value={formData.deployment || ""}
-              onChange={(e) => setFormData({ ...formData, deployment: e.target.value })}
-            />
+          <div className="grid gap-6 md:grid-cols-3">
+            <div>
+              <label className="block text-sm font-medium text-slate-900">Semaforo</label>
+              <select
+                className="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm"
+                value={formData.semaforo || "GIALLO"}
+                onChange={(e) => setFormData({ ...formData, semaforo: e.target.value })}
+              >
+                <option value="VERDE">VERDE</option>
+                <option value="GIALLO">GIALLO</option>
+                <option value="ROSSO">ROSSO</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-900">Posizionamento</label>
+              <select
+                className="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm"
+                value={formData.posizionamento || "Selettiva"}
+                onChange={(e) => setFormData({ ...formData, posizionamento: e.target.value })}
+              >
+                <option value="Leader">Leader</option>
+                <option value="Core">Core</option>
+                <option value="Selettiva">Selettiva</option>
+                <option value="Presidio">Presidio</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-slate-900">Raccomandazione</label>
+              <select
+                className="mt-2 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm"
+                value={formData.raccomandazione || "SELEZIONARE-PILOTARE"}
+                onChange={(e) => setFormData({ ...formData, raccomandazione: e.target.value })}
+              >
+                <option value="ACCELERARE">ACCELERARE</option>
+                <option value="SELEZIONARE-PILOTARE">SELEZIONARE-PILOTARE</option>
+                <option value="PRESIDIARE-PHASE-OUT">PRESIDIARE-PHASE-OUT</option>
+              </select>
+            </div>
           </div>
 
           <div>
@@ -358,26 +380,6 @@ export function AppTecnologieManager() {
                     .split(",")
                     .map((s) => s.trim())
                     .filter(Boolean) as typeof formData.sectors,
-                })
-              }
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-slate-900">Sfide principali</label>
-            <p className="mt-1 text-sm text-slate-500">Inserisci le sfide separate da virgola</p>
-            <Textarea
-              className="mt-2 rounded-lg"
-              placeholder="Es. Supply chain, Grid integration, Land use"
-              rows={2}
-              value={(formData.challenges || []).join(", ")}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  challenges: e.target.value
-                    .split(",")
-                    .map((s) => s.trim())
-                    .filter(Boolean) as typeof formData.challenges,
                 })
               }
             />

@@ -2,6 +2,7 @@ import { SectionHeader } from "../../components/shared/SectionHeader";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
 import { techs } from "../../data/mockData";
+import { componenti } from "../../data/analyticalData";
 
 export function TechnologiesPanel() {
   return (
@@ -22,7 +23,7 @@ export function TechnologiesPanel() {
               <div key={t.id} className="flex items-center justify-between rounded-2xl border border-slate-200 p-4">
                 <div>
                   <div className="font-medium text-slate-950">{t.name}</div>
-                  <div className="text-sm text-slate-500">{t.family} • {t.market}</div>
+                  <div className="text-sm text-slate-500">{t.family} • {t.posizionamento}</div>
                 </div>
                 <Button variant="outline" className="rounded-xl">Apri</Button>
               </div>
@@ -35,13 +36,11 @@ export function TechnologiesPanel() {
             <CardDescription>Vista utile per far capire la profondita tecnica futura.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            {[
-              "Moduli, inverter e BOS - fotovoltaico",
-              "Turbine, fondazioni e rete - eolico",
-              "Elettrolizzatori, storage e trasporto - idrogeno",
-              "Reattore, BOP e supply chain - nucleare avanzato",
-            ].map((item) => (
-              <div key={item} className="rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">{item}</div>
+            {componenti.slice(0, 8).map((c) => (
+              <div key={c.compId} className="rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">
+                <span className="font-medium text-slate-900">{c.nome}</span> — {c.macrocomponente}
+                <div className="text-xs text-slate-400 mt-1">{c.funzione} • {c.stato}</div>
+              </div>
             ))}
           </CardContent>
         </Card>

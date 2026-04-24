@@ -44,11 +44,11 @@ export function PublicCompare() {
           </CardHeader>
           <CardContent className="space-y-3">
             {[
-              ["Competitivita", "Fotovoltaico"],
-              ["Maturita industriale", "Fotovoltaico / Eolico"],
-              ["Applicabilita PVS", "Fotovoltaico"],
+              ["Competitivita", "Fotovoltaico (95)"],
+              ["Maturita industriale", "Fotovoltaico / Eolico (100)"],
+              ["Sostenibilita", "Fotovoltaico / Eolico (100)"],
               ["Flessibilita per hard-to-abate", "Idrogeno verde"],
-              ["Tempi e semplicita di deployment", "Fotovoltaico"],
+              ["Score composito", "Fotovoltaico (90.1)"],
             ].map(([metric, winner]) => (
               <div key={metric} className="flex items-center justify-between rounded-2xl bg-slate-50 p-4 text-sm">
                 <span className="text-slate-600">{metric}</span>

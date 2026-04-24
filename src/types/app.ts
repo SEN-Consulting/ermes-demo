@@ -1,5 +1,6 @@
 export type PublicPage =
   | "home"
+  | "executive"
   | "tech"
   | "tech-detail"
   | "compare"
