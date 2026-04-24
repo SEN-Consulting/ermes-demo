@@ -288,10 +288,8 @@ export const blogTopics = [
 export const navPublic = [
   { id: "home", label: "Home" },
   { id: "tech", label: "Tecnologie" },
-  { id: "componenti", label: "Componenti" },
   { id: "compare", label: "Confronta" },
   { id: "markets", label: "Mercati di riferimento" },
-  { id: "fonti", label: "Fonti" },
   { id: "publications", label: "Pubblicazioni" },
   { id: "blog", label: "Blog pubblico" },
   { id: "assistant", label: "Chatbot ERMES" },

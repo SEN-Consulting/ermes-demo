@@ -10,15 +10,11 @@ import { PublicTecnologieDetail } from "./pages/public/PublicTecnologieDetail";
 import { PublicCompare } from "./pages/public/PublicCompare";
 import { PublicMarkets } from "./pages/public/PublicMarkets";
 import { PublicPublications } from "./pages/public/PublicPublications";
-import { PublicFonti } from "./pages/public/PublicFonti";
 import { PublicBlog } from "./pages/public/PublicBlog";
 import { PublicBlogDetail } from "./pages/public/PublicBlogDetail";
-import { PublicFontiDetail } from "./pages/public/PublicFontiDetail";
 import { PublicAssistant } from "./pages/public/PublicAssistant";
 import { PublicMethod } from "./pages/public/PublicMethod";
 import { PublicExecutive } from "./pages/public/PublicExecutive";
-import { PublicComponenti } from "./pages/public/PublicComponenti";
-import { PublicComponenteDetail } from "./pages/public/PublicComponenteDetail";
 import { AppDashboard } from "./pages/app/AppDashboard";
 import { AdvancedResearch } from "./pages/app/AdvancedResearch";
 import { TechnologiesPanel } from "./pages/app/TechnologiesPanel";
@@ -77,35 +73,7 @@ export default function ERMESCloudDemoMockup() {
         return;
       }
 
-      if (hash === "#fonti") {
-        setSurface("public");
-        setPublicPage("fonti");
-        setSelectedSourceSlug(null);
-        return;
-      }
 
-      if (hash.startsWith("#fonti/")) {
-        const slug = decodeURIComponent(hash.replace("#fonti/", "")).trim();
-        setSurface("public");
-        setPublicPage("fonti-detail");
-        setSelectedSourceSlug(slug || null);
-        return;
-      }
-
-      if (hash === "#componenti") {
-        setSurface("public");
-        setPublicPage("componenti");
-        setSelectedCompId(null);
-        return;
-      }
-
-      if (hash.startsWith("#componenti/")) {
-        const id = decodeURIComponent(hash.replace("#componenti/", "")).trim();
-        setSurface("public");
-        setPublicPage("componenti-detail");
-        setSelectedCompId(id || null);
-        return;
-      }
     };
 
     applyHashRoute();
@@ -152,74 +120,7 @@ export default function ERMESCloudDemoMockup() {
     if (publicPage === "compare") return <PublicCompare />;
     if (publicPage === "markets") return <PublicMarkets />;
     if (publicPage === "publications") return <PublicPublications />;
-    if (publicPage === "componenti") {
-      if (selectedCompId) {
-        return (
-          <PublicComponenteDetail
-            compId={selectedCompId}
-            onBack={() => {
-              setPublicPage("componenti");
-              setSelectedCompId(null);
-              window.location.hash = "componenti";
-            }}
-          />
-        );
-      }
-      return (
-        <PublicComponenti
-          onOpenComponente={(compId) => {
-            setSelectedCompId(compId);
-            setPublicPage("componenti-detail");
-          }}
-        />
-      );
-    }
-    if (publicPage === "componenti-detail") {
-      return (
-        <PublicComponenteDetail
-          compId={selectedCompId}
-          onBack={() => {
-            setPublicPage("componenti");
-            setSelectedCompId(null);
-            window.location.hash = "componenti";
-          }}
-        />
-      );
-    }
-    if (publicPage === "fonti") {
-      if (selectedSourceSlug) {
-        return (
-          <PublicFontiDetail
-            sourceSlug={selectedSourceSlug}
-            onBack={() => {
-              setPublicPage("fonti");
-              setSelectedSourceSlug(null);
-              window.location.hash = "fonti";
-            }}
-          />
-        );
-      }
-      return (
-        <PublicFonti
-          onOpenSource={(sourceSlug) => {
-            setSelectedSourceSlug(sourceSlug);
-            setPublicPage("fonti-detail");
-          }}
-        />
-      );
-    }
-    if (publicPage === "fonti-detail") {
-      return (
-        <PublicFontiDetail
-          sourceSlug={selectedSourceSlug}
-          onBack={() => {
-            setPublicPage("fonti");
-            setSelectedSourceSlug(null);
-            window.location.hash = "fonti";
-          }}
-        />
-      );
-    }
+
     if (publicPage === "blog") {
       return (
         <PublicBlog
