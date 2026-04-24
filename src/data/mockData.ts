@@ -1,4 +1,5 @@
 import {
+  BarChart3,
   Boxes,
   ClipboardList,
   Database,
@@ -286,7 +287,6 @@ export const blogTopics = [
 
 export const navPublic = [
   { id: "home", label: "Home" },
-  { id: "executive", label: "Executive" },
   { id: "tech", label: "Tecnologie" },
   { id: "componenti", label: "Componenti" },
   { id: "compare", label: "Confronta" },
@@ -299,7 +299,9 @@ export const navPublic = [
 ] as const;
 
 export const navApp = [
+  { id: "executive", label: "Executive", icon: BarChart3 },
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { id: "executive", label: "Executive", icon: BarChart3 },
   { id: "research", label: "Ricerca avanzata", icon: Search },
   { id: "sources", label: "Fonti", icon: Globe2 },
   { id: "technologies", label: "Tecnologie", icon: Database },

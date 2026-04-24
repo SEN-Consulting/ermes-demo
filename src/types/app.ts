@@ -1,6 +1,5 @@
 export type PublicPage =
   | "home"
-  | "executive"
   | "tech"
   | "tech-detail"
   | "componenti"
@@ -17,6 +16,7 @@ export type PublicPage =
 
 export type AppPage =
   | "dashboard"
+  | "executive"
   | "research"
   | "sources"
   | "technologies"

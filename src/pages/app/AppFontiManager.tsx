@@ -22,7 +22,7 @@ interface ManagedSource {
   focus: string[];
 }
 
-export function AppFontiManager() {
+export function AppFontiManager({ onOpenSource }: { onOpenSource?: (sourceId: string) => void }) {
   const [sources, setSources] = useState<ManagedSource[]>(() => {
     return (sourceRows as unknown as ManagedSource[]).map((s) => ({
       ...s, 
@@ -122,7 +122,11 @@ export function AppFontiManager() {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <h3 className="text-lg font-semibold text-slate-950">{source.name}</h3>
+                      <h3 className="text-lg font-semibold text-slate-950">
+                        {onOpenSource ? (
+                          <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenSource(source.id)}>{source.name}</button>
+                        ) : source.name}
+                      </h3>
                       <Badge className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100">
                         {source.type}
                       </Badge>

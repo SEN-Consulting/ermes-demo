@@ -29,6 +29,7 @@ import { EditorialPanel } from "./pages/app/EditorialPanel";
 import { SettingsPanel } from "./pages/app/SettingsPanel";
 import { AppTecnologieDetail } from "./pages/app/AppTecnologieDetail";
 import { AppComponenteDetail } from "./pages/app/AppComponenteDetail";
+import { AppFontiDetail } from "./pages/app/AppFontiDetail";
 
 export default function ERMESCloudDemoMockup() {
   const [surface, setSurface] = useState<Surface>("public");
@@ -40,6 +41,7 @@ export default function ERMESCloudDemoMockup() {
   const [appPage, setAppPage] = useState<AppPage>("dashboard");
   const [appSelectedTechId, setAppSelectedTechId] = useState<string | null>(null);
   const [appSelectedCompId, setAppSelectedCompId] = useState<string | null>(null);
+  const [appSelectedSourceId, setAppSelectedSourceId] = useState<string | null>(null);
 
   useEffect(() => {
     const applyHashRoute = () => {
@@ -113,7 +115,6 @@ export default function ERMESCloudDemoMockup() {
 
   const renderPublic = () => {
     if (publicPage === "home") return <PublicHome />;
-    if (publicPage === "executive") return <PublicExecutive />;
     if (publicPage === "tech") {
       if (selectedTechSlug) {
         return (
@@ -248,8 +249,19 @@ export default function ERMESCloudDemoMockup() {
 
   const renderApp = () => {
     if (appPage === "dashboard") return <AppDashboard />;
+    if (appPage === "executive") return <PublicExecutive />;
     if (appPage === "research") return <AdvancedResearch />;
-    if (appPage === "sources") return <AppFontiManager />;
+    if (appPage === "sources") {
+      if (appSelectedSourceId) {
+        return (
+          <AppFontiDetail
+            sourceId={appSelectedSourceId}
+            onBack={() => setAppSelectedSourceId(null)}
+          />
+        );
+      }
+      return <AppFontiManager onOpenSource={(sourceId) => setAppSelectedSourceId(sourceId)} />;
+    }
     if (appPage === "technologies") {
       if (appSelectedTechId) {
         return (
@@ -315,7 +327,7 @@ export default function ERMESCloudDemoMockup() {
         </>
       ) : (
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 md:px-6 xl:grid-cols-[260px_1fr]">
-          <AppSidebar appPage={appPage} setAppPage={(p) => { setAppPage(p); setAppSelectedTechId(null); setAppSelectedCompId(null); }} />
+          <AppSidebar appPage={appPage} setAppPage={(p) => { setAppPage(p); setAppSelectedTechId(null); setAppSelectedCompId(null); setAppSelectedSourceId(null); }} />
           <main className="space-y-6">{renderApp()}</main>
         </div>
       )}

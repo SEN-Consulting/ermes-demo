@@ -142,7 +142,11 @@ export function AppTecnologieManager({ onOpenTech360 }: { onOpenTech360?: (techI
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <h3 className="text-lg font-semibold text-slate-950">{tech.name}</h3>
+                      <h3 className="text-lg font-semibold text-slate-950">
+                        {onOpenTech360 ? (
+                          <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenTech360(tech.id)}>{tech.name}</button>
+                        ) : tech.name}
+                      </h3>
                       <Badge className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100">
                         {tech.family}
                       </Badge>
@@ -158,16 +162,6 @@ export function AppTecnologieManager({ onOpenTech360 }: { onOpenTech360?: (techI
                     </div>
                   </div>
                   <div className="ml-4 flex gap-2">
-                    {onOpenTech360 && (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="rounded-lg"
-                        onClick={() => onOpenTech360(tech.id)}
-                      >
-                        360°
-                      </Button>
-                    )}
                     <Button
                       size="sm"
                       variant="outline"

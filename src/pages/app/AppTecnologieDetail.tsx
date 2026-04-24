@@ -107,17 +107,75 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
 
       {/* Tab content */}
       {activeTab === "panoramica" && (
-        <div className="grid gap-6 md:grid-cols-2">
-          <Card className="rounded-[28px] shadow-sm">
-            <CardHeader><CardTitle className="text-sm font-semibold">Descrizione</CardTitle></CardHeader>
-            <CardContent><p className="leading-7 text-slate-700">{tech.description}</p></CardContent>
-          </Card>
-          <Card className="rounded-[28px] shadow-sm">
-            <CardHeader><CardTitle className="text-sm font-semibold">Settori di applicazione</CardTitle></CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {tech.sectors.map((s) => <Badge key={s} variant="outline" className="rounded-full">{s}</Badge>)}
-              </div>
+        <div className="space-y-6">
+          {/* Description & Sectors */}
+          <div className="grid gap-6 md:grid-cols-2">
+            <Card className="rounded-[28px] shadow-sm">
+              <CardHeader><CardTitle className="text-sm font-semibold">Descrizione</CardTitle></CardHeader>
+              <CardContent><p className="leading-7 text-slate-700">{tech.description}</p></CardContent>
+            </Card>
+            <Card className="rounded-[28px] shadow-sm">
+              <CardHeader><CardTitle className="text-sm font-semibold">Settori di applicazione</CardTitle></CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2">
+                  {tech.sectors.map((s) => <Badge key={s} variant="outline" className="rounded-full">{s}</Badge>)}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Summary stats */}
+          <div className="grid gap-4 md:grid-cols-3">
+            <Card className="rounded-[28px] shadow-sm">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-slate-950">{data.componenti.length}</div>
+                <div className="mt-1 text-sm text-slate-500">Componenti chiave</div>
+              </CardContent>
+            </Card>
+            <Card className="rounded-[28px] shadow-sm">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-slate-950">{data.settori.length}</div>
+                <div className="mt-1 text-sm text-slate-500">Settori di impatto</div>
+              </CardContent>
+            </Card>
+            <Card className="rounded-[28px] shadow-sm">
+              <CardContent className="p-6 text-center">
+                <div className="text-3xl font-bold text-slate-950">{data.bestPractices.length}</div>
+                <div className="mt-1 text-sm text-slate-500">Best practice documentate</div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Componenti overview */}
+          {data.componenti.length > 0 && (
+            <Card className="rounded-[28px] shadow-sm">
+              <CardHeader><CardTitle className="text-sm font-semibold">Componenti principali</CardTitle></CardHeader>
+              <CardContent className="space-y-3">
+                {data.componenti.slice(0, 5).map((c) => (
+                  <div key={c.compId} className="flex items-start justify-between rounded-2xl border border-slate-200 p-4">
+                    <div>
+                      <div className="font-medium text-slate-950">
+                        {onOpenComponente ? (
+                          <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenComponente(c.compId)}>{c.nome}</button>
+                        ) : c.nome}
+                      </div>
+                      <div className="text-sm text-slate-500">{c.macrocomponente}</div>
+                    </div>
+                    <Badge variant="outline" className="rounded-full text-xs">{c.stato}</Badge>
+                  </div>
+                ))}
+                {data.componenti.length > 5 && (
+                  <p className="text-sm text-slate-400 text-center">e altri {data.componenti.length - 5} componenti...</p>
+                )}
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Raccomandazione */}
+          <Card className="rounded-[28px] shadow-sm bg-slate-50">
+            <CardContent className="p-6">
+              <div className="text-xs uppercase tracking-widest text-slate-400 mb-2">Raccomandazione ERMES</div>
+              <p className="text-lg font-medium text-slate-900">{tech.raccomandazione}</p>
             </CardContent>
           </Card>
         </div>
@@ -126,23 +184,17 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
       {activeTab === "componenti" && (
         <div className="space-y-3">
           {data.componenti.length === 0 ? <p className="text-slate-500">Nessun componente disponibile.</p> : data.componenti.map((c) => (
-            <Card key={c.compId} className="rounded-[20px] shadow-sm">
-              <CardContent className="p-5">
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <div>
-                    <div className="font-medium text-slate-950">
-                      {onOpenComponente ? (
-                        <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenComponente(c.compId)}>{c.nome}</button>
-                      ) : c.nome}
-                    </div>
-                    <div className="text-xs text-slate-400">{c.macrocomponente}</div>
-                  </div>
-                  <Badge variant="outline" className="rounded-full text-xs">{c.stato}</Badge>
+            <div key={c.compId} className="flex items-start justify-between rounded-2xl border border-slate-200 p-4">
+              <div>
+                <div className="font-medium text-slate-950">
+                  {onOpenComponente ? (
+                    <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenComponente(c.compId)}>{c.nome}</button>
+                  ) : c.nome}
                 </div>
-                <p className="text-sm text-slate-600 mb-1">{c.descrizione}</p>
-                <div className="text-xs text-slate-500"><strong>Funzione:</strong> {c.funzione}</div>
-              </CardContent>
-            </Card>
+                <div className="text-sm text-slate-500">{c.macrocomponente}</div>
+              </div>
+              <Badge variant="outline" className="rounded-full text-xs">{c.stato}</Badge>
+            </div>
           ))}
         </div>
       )}

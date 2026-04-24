@@ -1,53 +1,60 @@
 import { SectionHeader } from "../../components/shared/SectionHeader";
-import { Button } from "../../components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../components/ui/card";
-import { techs } from "../../data/mockData";
+import { Badge } from "../../components/ui/badge";
+import { Card, CardContent } from "../../components/ui/card";
 import { componenti } from "../../data/analyticalData";
+import { techs } from "../../data/mockData";
+
+const statoBg = (stato: string) => {
+  if (stato.includes("diffusa")) return "bg-emerald-100 text-emerald-700";
+  if (stato.includes("iniziale")) return "bg-blue-100 text-blue-700";
+  if (stato.includes("Pilota") || stato.includes("dimostratore")) return "bg-amber-100 text-amber-700";
+  if (stato.includes("pre-commerciale") || stato.includes("FOAK") || stato.includes("Pre-commerciale")) return "bg-orange-100 text-orange-700";
+  return "bg-slate-100 text-slate-700";
+};
 
 export function TechnologiesPanel({ onOpenTech360, onOpenComponente }: { onOpenTech360?: (techId: string) => void; onOpenComponente?: (compId: string) => void }) {
   return (
     <div className="space-y-8">
       <SectionHeader
-        eyebrow="Tecnologie e componenti"
-        title="Gestione catalogo tecnologia, componenti, mercati e attributi chiave."
-        text="Questa vista mostra che la piattaforma non e solo editoriale ma anche gestionale: l'analista puo curare il portafoglio e mantenerlo coerente."
+        eyebrow="Gestione Componenti"
+        title="Catalogo componenti chiave delle tecnologie energetiche monitorate."
+        text="Naviga i componenti per tecnologia, macrocomponente e stato di maturita. Clicca sul nome per il dettaglio completo."
       />
-      <div className="grid gap-6 xl:grid-cols-[1fr_1fr]">
-        <Card className="rounded-[28px] shadow-sm">
-          <CardHeader>
-            <CardTitle>Registro tecnologie</CardTitle>
-            <CardDescription>Elenco amministrabile delle tecnologie monitorate.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {techs.map((t) => (
-              <div key={t.id} className="flex items-center justify-between rounded-2xl border border-slate-200 p-4">
-                <div>
-                  <div className="font-medium text-slate-950">{t.name}</div>
-                  <div className="text-sm text-slate-500">{t.family} • {t.posizionamento}</div>
+
+      <div className="space-y-4">
+        {componenti.map((c) => {
+          const tech = techs.find((t) => t.id === c.techId);
+          return (
+            <Card key={c.compId} className="rounded-[28px] shadow-sm">
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-lg font-semibold text-slate-950">
+                        {onOpenComponente ? (
+                          <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenComponente(c.compId)}>{c.nome}</button>
+                        ) : c.nome}
+                      </h3>
+                      <Badge className={`rounded-full ${statoBg(c.stato)}`}>{c.stato}</Badge>
+                    </div>
+                    <p className="mt-2 text-sm text-slate-600">{c.descrizione}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <Badge variant="outline" className="rounded-full text-xs">{c.macrocomponente}</Badge>
+                      {tech && (
+                        <Badge className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100 text-xs">
+                          {onOpenTech360 ? (
+                            <button className="hover:text-blue-700 hover:underline" onClick={() => onOpenTech360(tech.id)}>{tech.name}</button>
+                          ) : tech.name}
+                        </Badge>
+                      )}
+                      <Badge variant="outline" className="rounded-full text-xs">{c.funzione}</Badge>
+                    </div>
+                  </div>
                 </div>
-                <Button variant="outline" className="rounded-xl" onClick={() => onOpenTech360?.(t.id)}>Apri 360°</Button>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
-        <Card className="rounded-[28px] shadow-sm">
-          <CardHeader>
-            <CardTitle>Componenti chiave</CardTitle>
-            <CardDescription>Vista utile per far capire la profondita tecnica futura.</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {componenti.slice(0, 8).map((c) => (
-              <div key={c.compId} className="rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">
-                <span className="font-medium text-slate-900">
-                  {onOpenComponente ? (
-                    <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenComponente(c.compId)}>{c.nome}</button>
-                  ) : c.nome}
-                </span> — {c.macrocomponente}
-                <div className="text-xs text-slate-400 mt-1">{c.funzione} • {c.stato}</div>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
+              </CardContent>
+            </Card>
+          );
+        })}
       </div>
     </div>
   );
