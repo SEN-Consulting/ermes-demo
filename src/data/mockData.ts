@@ -299,7 +299,6 @@ export const navPublic = [
 ] as const;
 
 export const navApp = [
-  { id: "executive", label: "Executive", icon: BarChart3 },
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { id: "executive", label: "Executive", icon: BarChart3 },
   { id: "research", label: "Ricerca avanzata", icon: Search },

@@ -1,5 +1,5 @@
 import { ChevronLeft } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card";
@@ -19,23 +19,15 @@ const semaforoColor = (s: string) => {
   return "bg-red-100 text-red-800";
 };
 
-const tabs = [
-  { id: "panoramica", label: "Panoramica" },
-  { id: "componenti", label: "Componenti" },
-  { id: "trl", label: "TRL" },
-  { id: "costi", label: "Costi" },
-  { id: "prestazioni", label: "Prestazioni" },
-  { id: "settori", label: "Settori" },
-  { id: "sostenibilita", label: "Sostenibilita" },
-  { id: "bestpractice", label: "Best Practice" },
-  { id: "policy", label: "Policy" },
-  { id: "barriere", label: "Barriere & Opportunita" },
-  { id: "attori", label: "Attori" },
-] as const;
+const statoBg = (stato: string) => {
+  if (stato.includes("diffusa")) return "bg-emerald-100 text-emerald-700";
+  if (stato.includes("iniziale")) return "bg-blue-100 text-blue-700";
+  if (stato.includes("Pilota") || stato.includes("dimostratore")) return "bg-amber-100 text-amber-700";
+  if (stato.includes("pre-commerciale") || stato.includes("FOAK") || stato.includes("Pre-commerciale")) return "bg-orange-100 text-orange-700";
+  return "bg-slate-100 text-slate-700";
+};
 
 export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTecnologieDetailProps) {
-  const [activeTab, setActiveTab] = useState<string>("panoramica");
-
   const tech = useMemo(() => techs.find((t) => t.id === techId), [techId]);
   const data = useMemo(() => getTech360(techId), [techId]);
 
@@ -53,7 +45,7 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <Button variant="ghost" className="px-0 text-slate-700 hover:bg-transparent" onClick={onBack}>
         <ChevronLeft className="mr-1 h-4 w-4" /> Torna alle tecnologie
       </Button>
@@ -65,7 +57,6 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
           <Badge className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100">{tech.family}</Badge>
           <Badge variant="outline" className="rounded-full">#{tech.rank} nel ranking</Badge>
           <Badge variant="outline" className="rounded-full">{tech.posizionamento}</Badge>
-          <Badge variant="outline" className="rounded-full">{tech.raccomandazione}</Badge>
         </div>
         <h1 className="text-4xl font-bold tracking-tight text-slate-950">{tech.name}</h1>
         <p className="mt-3 text-lg leading-8 text-slate-600">{tech.summary}</p>
@@ -88,119 +79,70 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
         ))}
       </div>
 
-      {/* Tab bar */}
-      <div className="flex flex-wrap gap-2 border-b border-slate-200 pb-2">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`rounded-xl px-4 py-2 text-sm font-medium transition-colors ${
-              activeTab === tab.id
-                ? "bg-slate-950 text-white"
-                : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
+      {/* Description & Sectors */}
+      <div className="grid gap-6 md:grid-cols-2">
+        <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">Descrizione</CardTitle></CardHeader>
+          <CardContent><p className="leading-7 text-slate-700">{tech.description}</p></CardContent>
+        </Card>
+        <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">Settori di applicazione</CardTitle></CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2">
+              {tech.sectors.map((s) => <Badge key={s} variant="outline" className="rounded-full">{s}</Badge>)}
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
-      {/* Tab content */}
-      {activeTab === "panoramica" && (
-        <div className="space-y-6">
-          {/* Description & Sectors */}
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card className="rounded-[28px] shadow-sm">
-              <CardHeader><CardTitle className="text-sm font-semibold">Descrizione</CardTitle></CardHeader>
-              <CardContent><p className="leading-7 text-slate-700">{tech.description}</p></CardContent>
-            </Card>
-            <Card className="rounded-[28px] shadow-sm">
-              <CardHeader><CardTitle className="text-sm font-semibold">Settori di applicazione</CardTitle></CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {tech.sectors.map((s) => <Badge key={s} variant="outline" className="rounded-full">{s}</Badge>)}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Summary stats */}
-          <div className="grid gap-4 md:grid-cols-3">
-            <Card className="rounded-[28px] shadow-sm">
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-slate-950">{data.componenti.length}</div>
-                <div className="mt-1 text-sm text-slate-500">Componenti chiave</div>
-              </CardContent>
-            </Card>
-            <Card className="rounded-[28px] shadow-sm">
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-slate-950">{data.settori.length}</div>
-                <div className="mt-1 text-sm text-slate-500">Settori di impatto</div>
-              </CardContent>
-            </Card>
-            <Card className="rounded-[28px] shadow-sm">
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-slate-950">{data.bestPractices.length}</div>
-                <div className="mt-1 text-sm text-slate-500">Best practice documentate</div>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Componenti overview */}
-          {data.componenti.length > 0 && (
-            <Card className="rounded-[28px] shadow-sm">
-              <CardHeader><CardTitle className="text-sm font-semibold">Componenti principali</CardTitle></CardHeader>
-              <CardContent className="space-y-3">
-                {data.componenti.slice(0, 5).map((c) => (
-                  <div key={c.compId} className="flex items-start justify-between rounded-2xl border border-slate-200 p-4">
-                    <div>
-                      <div className="font-medium text-slate-950">
-                        {onOpenComponente ? (
-                          <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenComponente(c.compId)}>{c.nome}</button>
-                        ) : c.nome}
-                      </div>
-                      <div className="text-sm text-slate-500">{c.macrocomponente}</div>
-                    </div>
-                    <Badge variant="outline" className="rounded-full text-xs">{c.stato}</Badge>
-                  </div>
-                ))}
-                {data.componenti.length > 5 && (
-                  <p className="text-sm text-slate-400 text-center">e altri {data.componenti.length - 5} componenti...</p>
-                )}
-              </CardContent>
-            </Card>
-          )}
-
-          {/* Raccomandazione */}
-          <Card className="rounded-[28px] shadow-sm bg-slate-50">
-            <CardContent className="p-6">
-              <div className="text-xs uppercase tracking-widest text-slate-400 mb-2">Raccomandazione ERMES</div>
-              <p className="text-lg font-medium text-slate-900">{tech.raccomandazione}</p>
-            </CardContent>
-          </Card>
-        </div>
-      )}
-
-      {activeTab === "componenti" && (
-        <div className="space-y-3">
-          {data.componenti.length === 0 ? <p className="text-slate-500">Nessun componente disponibile.</p> : data.componenti.map((c) => (
-            <div key={c.compId} className="flex items-start justify-between rounded-2xl border border-slate-200 p-4">
-              <div>
-                <div className="font-medium text-slate-950">
-                  {onOpenComponente ? (
-                    <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenComponente(c.compId)}>{c.nome}</button>
-                  ) : c.nome}
-                </div>
-                <div className="text-sm text-slate-500">{c.macrocomponente}</div>
-              </div>
-              <Badge variant="outline" className="rounded-full text-xs">{c.stato}</Badge>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {activeTab === "trl" && (
+      {/* Summary stats */}
+      <div className="grid gap-4 md:grid-cols-3">
         <Card className="rounded-[28px] shadow-sm">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-slate-950">{data.componenti.length}</div>
+            <div className="mt-1 text-sm text-slate-500">Componenti chiave</div>
+          </CardContent>
+        </Card>
+        <Card className="rounded-[28px] shadow-sm">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-slate-950">{data.settori.length}</div>
+            <div className="mt-1 text-sm text-slate-500">Settori di impatto</div>
+          </CardContent>
+        </Card>
+        <Card className="rounded-[28px] shadow-sm">
+          <CardContent className="p-6 text-center">
+            <div className="text-3xl font-bold text-slate-950">{data.bestPractices.length}</div>
+            <div className="mt-1 text-sm text-slate-500">Best practice documentate</div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Componenti */}
+      {data.componenti.length > 0 && (
+        <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">Componenti chiave</CardTitle></CardHeader>
+          <CardContent className="space-y-3">
+            {data.componenti.map((c) => (
+              <div key={c.compId} className="flex items-start justify-between rounded-2xl border border-slate-200 p-4">
+                <div>
+                  <div className="font-medium text-slate-950">
+                    {onOpenComponente ? (
+                      <button className="hover:text-blue-700 hover:underline text-left" onClick={() => onOpenComponente(c.compId)}>{c.nome}</button>
+                    ) : c.nome}
+                  </div>
+                  <div className="text-sm text-slate-500">{c.macrocomponente}</div>
+                </div>
+                <Badge className={`rounded-full ${statoBg(c.stato)}`}>{c.stato}</Badge>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      )}
+
+      {/* TRL */}
+      {data.trl.length > 0 && (
+        <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">TRL — Technology Readiness Level</CardTitle></CardHeader>
           <CardContent className="p-0 overflow-x-auto">
             <table className="w-full text-sm">
               <thead><tr className="border-b border-slate-200 text-left">
@@ -224,30 +166,41 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
         </Card>
       )}
 
-      {activeTab === "costi" && (
-        <div className="space-y-3">
-          {data.costi.map((c, i) => (
-            <Card key={i} className="rounded-[20px] shadow-sm">
-              <CardContent className="p-5">
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <div className="font-medium text-slate-950">{c.metrica}</div>
-                  <div className="text-right">
-                    <div className="text-lg font-bold text-slate-950">{c.valore} <span className="text-sm font-normal text-slate-400">{c.unita}</span></div>
-                    <div className="text-xs text-slate-400">{c.anno}</div>
-                  </div>
-                </div>
-                <div className="flex gap-4 text-xs text-slate-500">
-                  <span><strong>Trend:</strong> {c.trend}</span>
-                  <span><strong>Driver:</strong> {c.driver}</span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+      {/* Costi */}
+      {data.costi.length > 0 && (
+        <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">Costi e competitivita</CardTitle></CardHeader>
+          <CardContent className="p-0 overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead><tr className="border-b border-slate-200 text-left">
+                <th className="p-4 font-semibold text-slate-500">Metrica</th>
+                <th className="p-4 font-semibold text-slate-500 text-right">Valore</th>
+                <th className="p-4 font-semibold text-slate-500">Unita</th>
+                <th className="p-4 font-semibold text-slate-500">Anno</th>
+                <th className="p-4 font-semibold text-slate-500">Trend</th>
+                <th className="p-4 font-semibold text-slate-500">Driver</th>
+              </tr></thead>
+              <tbody>
+                {data.costi.map((c, i) => (
+                  <tr key={i} className="border-b border-slate-100">
+                    <td className="p-4 font-medium text-slate-950">{c.metrica}</td>
+                    <td className="p-4 text-right font-bold tabular-nums">{c.valore}</td>
+                    <td className="p-4 text-slate-600">{c.unita}</td>
+                    <td className="p-4 text-slate-600">{c.anno}</td>
+                    <td className="p-4 text-slate-500 text-sm">{c.trend}</td>
+                    <td className="p-4 text-slate-500 text-sm">{c.driver}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </CardContent>
+        </Card>
       )}
 
-      {activeTab === "prestazioni" && (
+      {/* Prestazioni */}
+      {data.prestazioni.length > 0 && (
         <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">Prestazioni tecniche</CardTitle></CardHeader>
           <CardContent className="p-0 overflow-x-auto">
             <table className="w-full text-sm">
               <thead><tr className="border-b border-slate-200 text-left">
@@ -271,26 +224,30 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
         </Card>
       )}
 
-      {activeTab === "settori" && (
-        <div className="space-y-3">
-          {data.settori.map((s, i) => (
-            <Card key={i} className="rounded-[20px] shadow-sm">
-              <CardContent className="p-5">
-                <div className="flex items-start justify-between gap-3 mb-1">
+      {/* Settori */}
+      {data.settori.length > 0 && (
+        <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">Settori di impatto</CardTitle></CardHeader>
+          <CardContent className="space-y-3">
+            {data.settori.map((s, i) => (
+              <div key={i} className="flex items-start justify-between rounded-2xl border border-slate-200 p-4">
+                <div>
                   <div className="font-medium text-slate-950">{s.settore}</div>
-                  <Badge variant="outline" className="rounded-full text-xs">{s.intensita}</Badge>
+                  <div className="text-sm text-slate-600"><strong>Caso d'uso:</strong> {s.casoUso}</div>
+                  <div className="text-sm text-slate-500">{s.tipoImpatto}</div>
                 </div>
-                <div className="text-sm text-slate-600 mb-1"><strong>Caso d'uso:</strong> {s.casoUso}</div>
-                <div className="text-sm text-slate-500">{s.tipoImpatto}</div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                <Badge variant="outline" className="rounded-full text-xs">{s.intensita}</Badge>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
       )}
 
-      {activeTab === "sostenibilita" && data.sostenibilita && (
+      {/* Sostenibilita */}
+      {data.sostenibilita && (
         <Card className="rounded-[28px] shadow-sm">
-          <CardContent className="p-6 space-y-4">
+          <CardHeader><CardTitle className="text-sm font-semibold">Sostenibilita</CardTitle></CardHeader>
+          <CardContent>
             <div className="grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl bg-slate-50 p-4">
                 <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">Emissioni GHG lifecycle</div>
@@ -300,24 +257,26 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
                 <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">Tassonomia UE</div>
                 <div className="text-lg font-semibold">{data.sostenibilita.tassonomiaUE}</div>
               </div>
-            </div>
-            <div className="rounded-2xl bg-slate-50 p-4">
-              <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">LCA disponibile</div>
-              <div className="font-medium">{data.sostenibilita.lcaDisponibile}</div>
-            </div>
-            <div className="rounded-2xl bg-slate-50 p-4">
-              <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">Altri impatti</div>
-              <div className="text-sm text-slate-600">{data.sostenibilita.altriImpatti}</div>
+              <div className="rounded-2xl bg-slate-50 p-4">
+                <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">LCA disponibile</div>
+                <div className="font-medium">{data.sostenibilita.lcaDisponibile}</div>
+              </div>
+              <div className="rounded-2xl bg-slate-50 p-4">
+                <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">Altri impatti</div>
+                <div className="text-sm text-slate-600">{data.sostenibilita.altriImpatti}</div>
+              </div>
             </div>
           </CardContent>
         </Card>
       )}
 
-      {activeTab === "bestpractice" && (
-        <div className="space-y-4">
-          {data.bestPractices.map((bp, i) => (
-            <Card key={i} className="rounded-[28px] shadow-sm">
-              <CardContent className="p-6">
+      {/* Best Practices */}
+      {data.bestPractices.length > 0 && (
+        <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">Best Practice</CardTitle></CardHeader>
+          <CardContent className="space-y-4">
+            {data.bestPractices.map((bp, i) => (
+              <div key={i} className="rounded-2xl border border-slate-200 p-4">
                 <div className="mb-2">
                   <div className="font-semibold text-slate-950">{bp.progetto}</div>
                   <div className="text-sm text-slate-500">{bp.organizzazione} • {bp.paese} • {bp.anno}</div>
@@ -327,84 +286,93 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
                   <div className="rounded-xl bg-slate-50 p-3 text-sm"><strong className="text-slate-700">Perche rilevante:</strong> {bp.perche}</div>
                   <div className="rounded-xl bg-slate-50 p-3 text-sm"><strong className="text-slate-700">Risultati:</strong> {bp.risultati}</div>
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
       )}
 
-      {activeTab === "policy" && (
-        <div className="space-y-3">
-          {data.policy.map((p, i) => (
-            <Card key={i} className="rounded-[20px] shadow-sm">
-              <CardContent className="p-5">
-                <div className="flex items-start justify-between gap-3 mb-2">
-                  <div>
-                    <div className="font-medium text-slate-950">{p.titolo}</div>
-                    <div className="text-xs text-slate-400">{p.giurisdizione} • {p.tipo}</div>
-                  </div>
-                  <Badge variant="outline" className="rounded-full text-xs">{p.stato}</Badge>
+      {/* Policy */}
+      {data.policy.length > 0 && (
+        <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">Policy e regolamentazione</CardTitle></CardHeader>
+          <CardContent className="space-y-3">
+            {data.policy.map((p, i) => (
+              <div key={i} className="flex items-start justify-between rounded-2xl border border-slate-200 p-4">
+                <div>
+                  <div className="font-medium text-slate-950">{p.titolo}</div>
+                  <div className="text-xs text-slate-400">{p.giurisdizione} • {p.tipo}</div>
+                  <p className="mt-1 text-sm text-slate-600">{p.impatto}</p>
                 </div>
-                <p className="text-sm text-slate-600">{p.impatto}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                <Badge variant="outline" className="rounded-full text-xs">{p.stato}</Badge>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
       )}
 
-      {activeTab === "barriere" && (
+      {/* Barriere & Opportunita */}
+      {data.barriere.length > 0 && (
         <div className="grid gap-6 md:grid-cols-2">
-          <div className="space-y-3">
-            <h3 className="font-semibold text-slate-950">Barriere</h3>
-            {data.barriere.filter(b => b.tipo === "Barriera").map((b, i) => (
-              <Card key={i} className="rounded-[20px] shadow-sm border-red-100">
-                <CardContent className="p-5">
+          <Card className="rounded-[28px] shadow-sm">
+            <CardHeader><CardTitle className="text-sm font-semibold">Barriere</CardTitle></CardHeader>
+            <CardContent className="space-y-3">
+              {data.barriere.filter(b => b.tipo === "Barriera").map((b, i) => (
+                <div key={i} className="rounded-2xl border border-red-100 p-4">
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <div className="font-medium text-slate-950">{b.titolo}</div>
                     <Badge className="rounded-full bg-red-100 text-red-700 text-xs">{b.severita}</Badge>
                   </div>
                   <p className="text-sm text-slate-600 mb-2">{b.descrizione}</p>
                   <div className="text-xs text-slate-500"><strong>Mitigazione:</strong> {b.mitigazione}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="space-y-3">
-            <h3 className="font-semibold text-slate-950">Opportunita</h3>
-            {data.barriere.filter(b => b.tipo === "Opportunita").map((b, i) => (
-              <Card key={i} className="rounded-[20px] shadow-sm border-emerald-100">
-                <CardContent className="p-5">
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+          <Card className="rounded-[28px] shadow-sm">
+            <CardHeader><CardTitle className="text-sm font-semibold">Opportunita</CardTitle></CardHeader>
+            <CardContent className="space-y-3">
+              {data.barriere.filter(b => b.tipo === "Opportunita").map((b, i) => (
+                <div key={i} className="rounded-2xl border border-emerald-100 p-4">
                   <div className="flex items-start justify-between gap-3 mb-2">
                     <div className="font-medium text-slate-950">{b.titolo}</div>
                     <Badge className="rounded-full bg-emerald-100 text-emerald-700 text-xs">{b.severita}</Badge>
                   </div>
                   <p className="text-sm text-slate-600 mb-2">{b.descrizione}</p>
                   <div className="text-xs text-slate-500"><strong>Azione:</strong> {b.mitigazione}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
         </div>
       )}
 
-      {activeTab === "attori" && (
-        <div className="space-y-3">
-          {data.attori.length === 0 ? <p className="text-slate-500">Nessun attore mappato per questa tecnologia.</p> : data.attori.map((a, i) => (
-            <Card key={i} className="rounded-[20px] shadow-sm">
-              <CardContent className="p-5">
-                <div className="flex items-start justify-between gap-3 mb-1">
-                  <div>
-                    <div className="font-medium text-slate-950">{a.nome}</div>
-                    <div className="text-xs text-slate-400">{a.tipo} • {a.paese}</div>
-                  </div>
-                  <Badge variant="outline" className="rounded-full text-xs">{a.rilevanza}</Badge>
+      {/* Attori */}
+      {data.attori.length > 0 && (
+        <Card className="rounded-[28px] shadow-sm">
+          <CardHeader><CardTitle className="text-sm font-semibold">Attori chiave</CardTitle></CardHeader>
+          <CardContent className="space-y-3">
+            {data.attori.map((a, i) => (
+              <div key={i} className="flex items-start justify-between rounded-2xl border border-slate-200 p-4">
+                <div>
+                  <div className="font-medium text-slate-950">{a.nome}</div>
+                  <div className="text-xs text-slate-400">{a.tipo} • {a.paese}</div>
+                  <p className="mt-1 text-sm text-slate-600">{a.ruolo}</p>
                 </div>
-                <p className="text-sm text-slate-600">{a.ruolo}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                <Badge variant="outline" className="rounded-full text-xs">{a.rilevanza}</Badge>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
       )}
+
+      {/* Raccomandazione */}
+      <Card className="rounded-[28px] shadow-sm bg-slate-50">
+        <CardContent className="p-6">
+          <div className="text-xs uppercase tracking-widest text-slate-400 mb-2">Raccomandazione ERMES</div>
+          <p className="text-lg font-medium text-slate-900">{tech.raccomandazione}</p>
+        </CardContent>
+      </Card>
     </div>
   );
 }
