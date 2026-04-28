@@ -359,7 +359,7 @@ export function AdvancedResearch() {
                   <div className="space-y-3">
                     <input type="text" value={freeQueryLabel} onChange={(e) => setFreeQueryLabel(e.target.value)} placeholder="Nome della query" className="h-10 w-full rounded-2xl border border-slate-300 bg-white px-3 text-sm text-slate-700 focus:border-slate-500 focus:outline-none sm:w-1/2" />
                     <textarea value={freeQuery} onChange={(e) => setFreeQuery(e.target.value)} rows={3} placeholder='Es: "Generation IV" nuclear reactor OR Gen IV reactor' className="w-full rounded-2xl border border-slate-300 bg-white p-3 text-sm text-slate-700 focus:border-slate-500 focus:outline-none" />
-                    <p className="text-xs text-slate-400">Placeholder <code className="rounded bg-slate-100 px-1">{"{technology}"}</code> per iterare su tutte le tecnologie.</p>
+                    <p className="text-xs text-slate-400">Il segnaposto <code className="rounded bg-slate-100 px-1">{"{technology}"}</code> viene sostituito automaticamente con il nome di ciascuna tecnologia.</p>
                   </div>
                 )}
               </div>

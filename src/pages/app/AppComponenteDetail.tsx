@@ -231,7 +231,7 @@ export function AppComponenteDetail({ compId, onBack, onOpenTech, onOpenComponen
       {/* Related costs */}
       {relatedCosti.length > 0 && (
         <Card className="rounded-[28px] shadow-sm">
-          <CardHeader><CardTitle className="text-sm font-semibold">Costi e competitivita — {comp.tecnologia}</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="text-sm font-semibold">Costi e competitività — {comp.tecnologia}</CardTitle></CardHeader>
           <CardContent className="p-0 overflow-x-auto">
             <table className="w-full text-sm">
               <thead>

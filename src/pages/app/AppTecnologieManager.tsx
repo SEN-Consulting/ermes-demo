@@ -374,7 +374,7 @@ export function AppTecnologieManager({ onOpenTech360 }: { onOpenTech360?: (techI
             <p className="mt-1 text-sm text-slate-500">Inserisci i settori separati da virgola</p>
             <Textarea
               className="mt-2 rounded-lg"
-              placeholder="Es. Elettricita, Industria, Trasporti"
+              placeholder="Es. Elettricità, Industria, Trasporti"
               rows={2}
               value={(formData.sectors || []).join(", ")}
               onChange={(e) =>

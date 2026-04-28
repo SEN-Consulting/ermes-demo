@@ -7,10 +7,7 @@ import { AppPage, PublicPage, Surface } from "./types/app";
 import { PublicHome } from "./pages/public/PublicHome";
 import { PublicTech } from "./pages/public/PublicTech";
 import { PublicTecnologieDetail } from "./pages/public/PublicTecnologieDetail";
-import { PublicCompare } from "./pages/public/PublicCompare";
-import { PublicMarkets } from "./pages/public/PublicMarkets";
 import { PublicPublications } from "./pages/public/PublicPublications";
-import { PublicBlog } from "./pages/public/PublicBlog";
 import { PublicBlogDetail } from "./pages/public/PublicBlogDetail";
 import { PublicAssistant } from "./pages/public/PublicAssistant";
 import { PublicMethod } from "./pages/public/PublicMethod";
@@ -45,7 +42,7 @@ export default function ERMESCloudDemoMockup() {
 
       if (hash === "#blog") {
         setSurface("public");
-        setPublicPage("blog");
+        setPublicPage("publications");
         setSelectedArticleSlug(null);
         return;
       }
@@ -53,7 +50,22 @@ export default function ERMESCloudDemoMockup() {
       if (hash.startsWith("#blog/")) {
         const slug = decodeURIComponent(hash.replace("#blog/", "")).trim();
         setSurface("public");
-        setPublicPage("blog-detail");
+        setPublicPage("publication-detail");
+        setSelectedArticleSlug(slug || null);
+        return;
+      }
+
+      if (hash === "#publications") {
+        setSurface("public");
+        setPublicPage("publications");
+        setSelectedArticleSlug(null);
+        return;
+      }
+
+      if (hash.startsWith("#publications/")) {
+        const slug = decodeURIComponent(hash.replace("#publications/", "")).trim();
+        setSurface("public");
+        setPublicPage("publication-detail");
         setSelectedArticleSlug(slug || null);
         return;
       }
@@ -117,17 +129,38 @@ export default function ERMESCloudDemoMockup() {
         />
       );
     }
-    if (publicPage === "compare") return <PublicCompare />;
-    if (publicPage === "markets") return <PublicMarkets />;
-    if (publicPage === "publications") return <PublicPublications />;
-
+    if (publicPage === "compare") { setPublicPage("home"); return <PublicHome />; }
+    if (publicPage === "markets") { setPublicPage("home"); return <PublicHome />; }
+    if (publicPage === "publications") {
+      return (
+        <PublicPublications
+          onOpenPublication={(slug) => {
+            setSelectedArticleSlug(slug);
+            setPublicPage("publication-detail");
+            window.location.hash = `publications/${encodeURIComponent(slug)}`;
+          }}
+        />
+      );
+    }
+    if (publicPage === "publication-detail") {
+      return (
+        <PublicBlogDetail
+          articleSlug={selectedArticleSlug}
+          onBack={() => {
+            setPublicPage("publications");
+            setSelectedArticleSlug(null);
+            window.location.hash = "publications";
+          }}
+        />
+      );
+    }
     if (publicPage === "blog") {
       return (
-        <PublicBlog
-          onOpenArticle={(articleSlug) => {
-            setSelectedArticleSlug(articleSlug);
-            setPublicPage("blog-detail");
-            window.location.hash = `blog/${encodeURIComponent(articleSlug)}`;
+        <PublicPublications
+          onOpenPublication={(slug) => {
+            setSelectedArticleSlug(slug);
+            setPublicPage("publication-detail");
+            window.location.hash = `publications/${encodeURIComponent(slug)}`;
           }}
         />
       );
@@ -137,9 +170,9 @@ export default function ERMESCloudDemoMockup() {
         <PublicBlogDetail
           articleSlug={selectedArticleSlug}
           onBack={() => {
-            setPublicPage("blog");
+            setPublicPage("publications");
             setSelectedArticleSlug(null);
-            window.location.hash = "blog";
+            window.location.hash = "publications";
           }}
         />
       );
@@ -209,7 +242,7 @@ export default function ERMESCloudDemoMockup() {
             </div>
             <div>
               <div className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">Fondazione Eni Enrico Mattei</div>
-              <div className="text-xl font-semibold tracking-tight text-slate-950">Mockup ERMES</div>
+              <div className="text-xl font-semibold tracking-tight text-slate-950">ERMES</div>
             </div>
           </div>
           <Tabs value={surface} onValueChange={(v) => setSurface(v as Surface)}>

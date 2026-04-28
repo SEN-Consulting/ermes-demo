@@ -5,6 +5,7 @@ export type PublicPage =
   | "compare"
   | "markets"
   | "publications"
+  | "publication-detail"
   | "blog"
   | "blog-detail"
   | "assistant"

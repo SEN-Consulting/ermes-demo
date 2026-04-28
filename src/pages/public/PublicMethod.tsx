@@ -13,10 +13,10 @@ export function PublicMethod() {
         {[
           ["Come funziona ERMES", "Spiegazione semplice del motore dati e degli output."],
           ["Fonti informative", "Mappa delle fonti classificate e logiche di monitoraggio."],
-          ["Criteri di classificazione", "Come sono lette maturita, competitivita, sostenibilita e mercati."],
+          ["Criteri di classificazione", "Come sono lette maturità, competitività, sostenibilità e mercati."],
           ["Aggiornamento dei dati", "Flusso di ricerca, selezione, validazione e pubblicazione."],
           ["Semafori e ranking", "Criteri di scoring e logiche di comparazione."],
-          ["Limiti e avvertenze", "Cosa e benchmark, cosa e evidenza, cosa e interpretazione."],
+          ["Limiti e avvertenze", "Cosa è benchmark, cosa è evidenza, cosa è interpretazione."],
         ].map(([title, text]) => (
           <Card key={title} className="rounded-[28px] shadow-sm">
             <CardHeader>

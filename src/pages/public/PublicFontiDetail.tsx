@@ -126,7 +126,7 @@ export function PublicFontiDetail({ sourceSlug, onBack }: PublicFontiDetailProps
               </div>
               <div>
                 <div className="text-xs font-medium text-slate-500 uppercase">Affidabilita</div>
-                <div className="mt-1 text-slate-900">{source.affidabilita}</div>
+                <div className="mt-1 text-slate-900">{source.affidabilità}</div>
               </div>
               <div>
                 <div className="text-xs font-medium text-slate-500 uppercase">Copertura</div>

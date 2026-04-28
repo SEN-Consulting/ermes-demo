@@ -169,7 +169,7 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
       {/* Costi */}
       {data.costi.length > 0 && (
         <Card className="rounded-[28px] shadow-sm">
-          <CardHeader><CardTitle className="text-sm font-semibold">Costi e competitivita</CardTitle></CardHeader>
+          <CardHeader><CardTitle className="text-sm font-semibold">Costi e competitività</CardTitle></CardHeader>
           <CardContent className="p-0 overflow-x-auto">
             <table className="w-full text-sm">
               <thead><tr className="border-b border-slate-200 text-left">
@@ -244,26 +244,26 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
       )}
 
       {/* Sostenibilita */}
-      {data.sostenibilita && (
+      {data.sostenibilità && (
         <Card className="rounded-[28px] shadow-sm">
           <CardHeader><CardTitle className="text-sm font-semibold">Sostenibilita</CardTitle></CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-2">
               <div className="rounded-2xl bg-slate-50 p-4">
                 <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">Emissioni GHG lifecycle</div>
-                <div className="text-2xl font-bold">{data.sostenibilita.emissioniGHG} <span className="text-sm font-normal text-slate-500">{data.sostenibilita.unitaGHG}</span></div>
+                <div className="text-2xl font-bold">{data.sostenibilità.emissioniGHG} <span className="text-sm font-normal text-slate-500">{data.sostenibilità.unitaGHG}</span></div>
               </div>
               <div className="rounded-2xl bg-slate-50 p-4">
                 <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">Tassonomia UE</div>
-                <div className="text-lg font-semibold">{data.sostenibilita.tassonomiaUE}</div>
+                <div className="text-lg font-semibold">{data.sostenibilità.tassonomiaUE}</div>
               </div>
               <div className="rounded-2xl bg-slate-50 p-4">
                 <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">LCA disponibile</div>
-                <div className="font-medium">{data.sostenibilita.lcaDisponibile}</div>
+                <div className="font-medium">{data.sostenibilità.lcaDisponibile}</div>
               </div>
               <div className="rounded-2xl bg-slate-50 p-4">
                 <div className="text-xs uppercase tracking-widest text-slate-400 mb-1">Altri impatti</div>
-                <div className="text-sm text-slate-600">{data.sostenibilita.altriImpatti}</div>
+                <div className="text-sm text-slate-600">{data.sostenibilità.altriImpatti}</div>
               </div>
             </div>
           </CardContent>
@@ -283,7 +283,7 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
                 </div>
                 <p className="text-sm text-slate-600 mb-2">{bp.descrizione}</p>
                 <div className="grid gap-2 md:grid-cols-2">
-                  <div className="rounded-xl bg-slate-50 p-3 text-sm"><strong className="text-slate-700">Perche rilevante:</strong> {bp.perche}</div>
+                  <div className="rounded-xl bg-slate-50 p-3 text-sm"><strong className="text-slate-700">Perché rilevante:</strong> {bp.perche}</div>
                   <div className="rounded-xl bg-slate-50 p-3 text-sm"><strong className="text-slate-700">Risultati:</strong> {bp.risultati}</div>
                 </div>
               </div>

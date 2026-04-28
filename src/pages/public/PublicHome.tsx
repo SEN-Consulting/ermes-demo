@@ -29,14 +29,14 @@ export function PublicHome() {
         </div>
         <Card className="rounded-[32px] shadow-sm">
           <CardHeader>
-            <CardTitle>Per chi e pensato</CardTitle>
+            <CardTitle>Per chi è pensato</CardTitle>
             <CardDescription>Il tono e la struttura sono quelli di un portale informativo, non di una dashboard tecnica.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             {[
               ["Policy maker", "Confronti rapidi, messaggi chiave, policy brief e contenuti sintetici."],
               ["Utente informato", "Articoli, aggiornamenti, schede tecnologia e spiegazioni chiare."],
-              ["Analista o esperto", "Accesso a sezioni piu dense come confronto, mercati, metodologia e chatbot in modalita analitica."],
+              ["Analista o esperto", "Accesso a sezioni più dense come confronto, pubblicazioni, metodologia e chatbot in modalità analitica."],
             ].map(([title, text]) => (
               <div key={title} className="rounded-2xl bg-slate-50 p-4">
                 <div className="font-medium text-slate-950">{title}</div>
@@ -51,7 +51,7 @@ export function PublicHome() {
         <MetricCard label="Tecnologie monitorate" value={`${techs.length}`} hint="portfolio ERMES completo" icon={Cpu} />
         <MetricCard label="Componenti / sottosistemi" value="44+" hint="mappati per tecnologia" icon={Boxes} />
         <MetricCard label="Fonti classificate" value={`${sourceRows.length}`} hint="istituzionali, media, database" icon={Globe2} />
-        <MetricCard label="Output editoriali" value="Report • Brief • Newsletter" hint="disseminazione continua" icon={FileText} />
+        <MetricCard label="Output editoriali" value="Report • Brief • Blog" hint="disseminazione continua" icon={FileText} />
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
@@ -78,13 +78,13 @@ export function PublicHome() {
         <Card className="rounded-[28px] shadow-sm">
           <CardHeader>
             <CardTitle>Ultimi aggiornamenti</CardTitle>
-            <CardDescription>La parte viva del sito pubblico, alimentata poi dal motore Python.</CardDescription>
+            <CardDescription>La parte viva del sito pubblico, alimentata dal motore di ricerca ERMES.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             {updates.map((u) => (
               <div key={u.title} className="rounded-2xl bg-slate-50 p-4">
                 <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                  <Badge className="rounded-full bg-white text-slate-700 hover:bg-white">{u.tech}</Badge>
+                  <Badge className="rounded-full bg-slate-200 text-slate-700 hover:bg-slate-200">{u.tech}</Badge>
                   <span>{u.category}</span>
                   <span>•</span>
                   <span>{u.date}</span>

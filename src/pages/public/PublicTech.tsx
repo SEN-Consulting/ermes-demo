@@ -69,7 +69,6 @@ export function PublicTech({ onOpenTech }: PublicTechProps) {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-sm leading-7 text-slate-600">{t.summary}</p>
               <div className="grid gap-3 md:grid-cols-3">
                 <div className="rounded-2xl bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.2em] text-slate-400">Score</div><div className="mt-2 text-lg font-semibold">{t.score}/100</div></div>
                 <div className="rounded-2xl bg-slate-50 p-4"><div className="text-xs uppercase tracking-[0.2em] text-slate-400">Ranking</div><div className="mt-2 text-lg font-semibold">#{t.rank}</div></div>
@@ -77,9 +76,10 @@ export function PublicTech({ onOpenTech }: PublicTechProps) {
               </div>
               <div className="flex flex-wrap gap-2">
                 {t.sectors.map((sector) => (
-                  <Badge key={sector} className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100">{sector}</Badge>
+                  <Badge key={sector} className="rounded-full bg-slate-900 text-white hover:bg-slate-900">{sector}</Badge>
                 ))}
               </div>
+              <p className="text-sm leading-7 text-slate-600">{t.summary}</p>
               <Button
                 className="rounded-2xl"
                 onClick={() => {

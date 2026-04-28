@@ -14,10 +14,10 @@ export function AppDashboard() {
         text="Qui non serve backend reale: serve far vedere bene il cockpit di monitoraggio, aggiornamento e produzione contenuti."
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <MetricCard label="Aggiornamenti da validare" value="18" hint="priorita di oggi" icon={Bell} />
+        <MetricCard label="Aggiornamenti da validare" value="18" hint="priorità di oggi" icon={Bell} />
         <MetricCard label="Fonti attive" value="27" hint="strategie differenziate" icon={Globe2} />
         <MetricCard label="Schede complete" value="11/11" hint="copertura portafoglio" icon={Database} />
-        <MetricCard label="Contenuti in workflow" value="31" hint="blog, brief, newsletter" icon={Newspaper} />
+        <MetricCard label="Contenuti in workflow" value="31" hint="blog, brief, report" icon={Newspaper} />
       </div>
       <div className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
         <Card className="rounded-[28px] shadow-sm">
@@ -47,7 +47,7 @@ export function AppDashboard() {
               "Validare gli aggiornamenti su nucleare avanzato e idrogeno verde.",
               "Rivedere la strategia di 3 fonti istituzionali poco produttive.",
               "Trasformare 2 evidenze in articolo pubblico e 1 in policy brief.",
-              "Chiudere la bozza newsletter del mese.",
+              "Chiudere la bozza del report mensile.",
             ].map((todo) => (
               <div key={todo} className="rounded-2xl bg-slate-50 p-4 text-sm leading-6 text-slate-600">{todo}</div>
             ))}

@@ -22,33 +22,33 @@ export const componenti: Componente[] = [
   // Fotovoltaico
   { compId: "C-FV-001", techId: "T004", tecnologia: "Fotovoltaico", macrocomponente: "Generazione", nome: "Modulo FV", descrizione: "Elemento attivo composto da celle, vetro, encapsulante e frame; oggi dominano soluzioni bifacciali e n-type.", funzione: "Conversione della radiazione in corrente continua", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-FV-002", techId: "T004", tecnologia: "Fotovoltaico", macrocomponente: "Elettronica di potenza", nome: "Inverter", descrizione: "Converte la corrente continua in alternata e abilita controllo, protezione e servizi di rete.", funzione: "Conversione DC/AC, controllo e grid support", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
-  { compId: "C-FV-003", techId: "T004", tecnologia: "Fotovoltaico", macrocomponente: "Accumulo / backup", nome: "Sistema di backup / accumulo", descrizione: "Batterie e PCS integrati con il FV per continuita, peak shaving e riduzione curtailment.", funzione: "Flessibilita, backup e ottimizzazione energetica", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
+  { compId: "C-FV-003", techId: "T004", tecnologia: "Fotovoltaico", macrocomponente: "Accumulo / backup", nome: "Sistema di backup / accumulo", descrizione: "Batterie e PCS integrati con il FV per continuità, peak shaving e riduzione curtailment.", funzione: "Flessibilita, backup e ottimizzazione energetica", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-FV-004", techId: "T004", tecnologia: "Fotovoltaico", macrocomponente: "Inseguimento / BOS", nome: "Tracker monoassiale", descrizione: "Struttura mobile che aumenta la produzione seguendo il sole.", funzione: "Incremento resa energetica", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-FV-005", techId: "T004", tecnologia: "Fotovoltaico", macrocomponente: "BOS / connessione", nome: "Strutture e BOS", descrizione: "Cabling, quadri, trasformatori, protezioni e opere elettromeccaniche.", funzione: "Installazione, connessione e sicurezza", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-FV-006", techId: "T004", tecnologia: "Fotovoltaico", macrocomponente: "Modulo avanzato", nome: "Modulo tandem perovskite-silicio", descrizione: "Nuova generazione ad altissima efficienza, in fase di scale-up industriale iniziale.", funzione: "Aumento efficienza e riduzione impronta materiale per kWh", stato: "FOAK / pre-commerciale", ultimoAggiornamento: "2026-03-28", note: "Scale-up industriale in fase iniziale; efficienza record in laboratorio" },
-  { compId: "C-FV-007", techId: "T004", tecnologia: "Fotovoltaico", macrocomponente: "Applicazione integrata", nome: "Sistema agrivoltaico", descrizione: "Configurazione integrata FV + attivita agricola con progettazione per dual land use.", funzione: "Co-produzione di energia e valore agricolo", stato: "Pilota / dimostratore", ultimoAggiornamento: "2026-03-28", note: "In espansione grazie a normativa UE sull'uso duale del suolo" },
+  { compId: "C-FV-007", techId: "T004", tecnologia: "Fotovoltaico", macrocomponente: "Applicazione integrata", nome: "Sistema agrivoltaico", descrizione: "Configurazione integrata FV + attività agricola con progettazione per dual land use.", funzione: "Co-produzione di energia e valore agricolo", stato: "Pilota / dimostratore", ultimoAggiornamento: "2026-03-28", note: "In espansione grazie a normativa UE sull'uso duale del suolo" },
   // Eolico
-  { compId: "C-WI-001", techId: "T006", tecnologia: "Eolico", macrocomponente: "Aerodinamica", nome: "Rotore e pale", descrizione: "Insieme pale-mozzo che cattura energia dal vento; trend verso pale piu lunghe.", funzione: "Conversione energia cinetica del vento in coppia meccanica", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
-  { compId: "C-WI-002", techId: "T006", tecnologia: "Eolico", macrocomponente: "Conversione elettromeccanica", nome: "Nacelle e drivetrain", descrizione: "Gearbox/direct drive, generatore e sistemi ausiliari.", funzione: "Conversione meccanico-elettrica e affidabilita di sistema", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
+  { compId: "C-WI-001", techId: "T006", tecnologia: "Eolico", macrocomponente: "Aerodinamica", nome: "Rotore e pale", descrizione: "Insieme pale-mozzo che cattura energia dal vento; trend verso pale più lunghe.", funzione: "Conversione energia cinetica del vento in coppia meccanica", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
+  { compId: "C-WI-002", techId: "T006", tecnologia: "Eolico", macrocomponente: "Conversione elettromeccanica", nome: "Nacelle e drivetrain", descrizione: "Gearbox/direct drive, generatore e sistemi ausiliari.", funzione: "Conversione meccanico-elettrica e affidabilità di sistema", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-WI-003", techId: "T006", tecnologia: "Eolico", macrocomponente: "Struttura", nome: "Torre e struttura di supporto", descrizione: "Torre tubolare o modulare che aumenta l'accesso a risorse migliori.", funzione: "Supporto strutturale e altezza mozzo", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
-  { compId: "C-WI-004", techId: "T006", tecnologia: "Eolico", macrocomponente: "Offshore fisso", nome: "Fondazione fissa offshore", descrizione: "Monopile, jacket o altre soluzioni per acque basse.", funzione: "Ancoraggio e stabilita in ambiente marino", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
+  { compId: "C-WI-004", techId: "T006", tecnologia: "Eolico", macrocomponente: "Offshore fisso", nome: "Fondazione fissa offshore", descrizione: "Monopile, jacket o altre soluzioni per acque basse.", funzione: "Ancoraggio e stabilità in ambiente marino", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-WI-005", techId: "T006", tecnologia: "Eolico", macrocomponente: "Offshore floating", nome: "Piattaforma floating", descrizione: "Sottostruttura galleggiante con sistemi di ancoraggio per acque profonde.", funzione: "Sostegno della turbina in acque profonde", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28", note: "Tecnologia abilitante per siti in acque profonde" },
-  { compId: "C-WI-006", techId: "T006", tecnologia: "Eolico", macrocomponente: "Digitale / O&M", nome: "Sistemi di controllo e condition monitoring", descrizione: "Sensoristica, SCADA, digital twin e algoritmi per manutenzione predittiva.", funzione: "Ottimizzazione produzione, affidabilita e O&M", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
+  { compId: "C-WI-006", techId: "T006", tecnologia: "Eolico", macrocomponente: "Digitale / O&M", nome: "Sistemi di controllo e condition monitoring", descrizione: "Sensoristica, SCADA, digital twin e algoritmi per manutenzione predittiva.", funzione: "Ottimizzazione produzione, affidabilità e O&M", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-WI-007", techId: "T006", tecnologia: "Eolico", macrocomponente: "Grid connection", nome: "Sottostazione e connessione di rete", descrizione: "Trasformatori, sottostazioni e cavi HVAC/HVDC.", funzione: "Connessione alla rete e integrazione di sistema", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   // Idrogeno verde
   { compId: "C-H2-001", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Produzione", nome: "Elettrolizzatore alcalino", descrizione: "Tecnologia matura con elettrolita liquido, adatta a grandi taglie e CAPEX contenuto.", funzione: "Scissione dell'acqua in H2 e O2", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28", note: "Tecnologia di riferimento per impianti su scala GW" },
-  { compId: "C-H2-002", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Produzione", nome: "Elettrolizzatore PEM", descrizione: "Tecnologia polimerica con buona flessibilita e rapido ramping.", funzione: "Produzione H2 con elevata dinamica operativa", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
+  { compId: "C-H2-002", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Produzione", nome: "Elettrolizzatore PEM", descrizione: "Tecnologia polimerica con buona flessibilità e rapido ramping.", funzione: "Produzione H2 con elevata dinamica operativa", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-H2-003", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Produzione avanzata", nome: "Elettrolizzatore SOEC", descrizione: "Tecnologia ad alta temperatura con potenziale di maggiore efficienza.", funzione: "Produzione H2 ad alta efficienza con input termico", stato: "Pre-commerciale", ultimoAggiornamento: "2026-03-28", note: "Potenziale di efficienza superiore con integrazione termica" },
   { compId: "C-H2-004", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Balance of Plant", nome: "Rettificatori, acqua e ausiliari", descrizione: "Conversione elettrica, deionizzazione, raffreddamento, separazione gas.", funzione: "Supporto al funzionamento dello stack", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
-  { compId: "C-H2-005", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Midstream", nome: "Compressione e stoccaggio H2", descrizione: "Compressori, serbatoi e sistemi di accumulo per buffer operativo.", funzione: "Condizionamento e disponibilita del vettore", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28", note: "Infrastruttura critica per la filiera idrogeno" },
+  { compId: "C-H2-005", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Midstream", nome: "Compressione e stoccaggio H2", descrizione: "Compressori, serbatoi e sistemi di accumulo per buffer operativo.", funzione: "Condizionamento e disponibilità del vettore", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28", note: "Infrastruttura critica per la filiera idrogeno" },
   { compId: "C-H2-006", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Logistica", nome: "Trasporto e distribuzione", descrizione: "Tube trailer, pipeline, liquefazione o conversione in ammoniaca.", funzione: "Consegna del vettore ai siti di uso finale", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
-  { compId: "C-H2-007", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Controllo sistema", nome: "Energy management e integrazione FER", descrizione: "EMS e logiche di dispatch che coordinano elettrolizzatore, rinnovabili, rete e stoccaggi.", funzione: "Ottimizzazione LCOH e flessibilita di esercizio", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
+  { compId: "C-H2-007", techId: "T011", tecnologia: "Idrogeno verde", macrocomponente: "Controllo sistema", nome: "Energy management e integrazione FER", descrizione: "EMS e logiche di dispatch che coordinano elettrolizzatore, rinnovabili, rete e stoccaggi.", funzione: "Ottimizzazione LCOH e flessibilità di esercizio", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
   // Carbone
   { compId: "C-CO-001", techId: "T001", tecnologia: "Carbone", macrocomponente: "Supply", nome: "Estrazione e preparazione", descrizione: "Mining, washing e handling del carbone.", funzione: "Fornitura combustibile", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-CO-002", techId: "T001", tecnologia: "Carbone", macrocomponente: "Combustione", nome: "Caldaia PC / USC", descrizione: "Boiler a polverino supercritical o ultrasupercritical.", funzione: "Generazione vapore ad alta temperatura e pressione", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-CO-003", techId: "T001", tecnologia: "Carbone", macrocomponente: "Turbina", nome: "Turbina a vapore e generatore", descrizione: "Isola convenzionale di conversione termoelettrica.", funzione: "Conversione meccanica ed elettrica", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
-  { compId: "C-CO-004", techId: "T001", tecnologia: "Carbone", macrocomponente: "Controllo emissioni", nome: "FGD / SCR / ESP", descrizione: "Sistemi di abbattimento SOx, NOx, polveri e mercurio.", funzione: "Conformita ambientale", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
-  { compId: "C-CO-005", techId: "T001", tecnologia: "Carbone", macrocomponente: "Decarbonizzazione", nome: "CCS retrofit", descrizione: "Cattura post-combustione e compressione CO2.", funzione: "Riduzione emissioni lifecycle e direct stack", stato: "FOAK / pre-commerciale", ultimoAggiornamento: "2026-03-28", note: "Viabilita dipendente da carbon price adeguato" },
+  { compId: "C-CO-004", techId: "T001", tecnologia: "Carbone", macrocomponente: "Controllo emissioni", nome: "FGD / SCR / ESP", descrizione: "Sistemi di abbattimento SOx, NOx, polveri e mercurio.", funzione: "Conformità ambientale", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
+  { compId: "C-CO-005", techId: "T001", tecnologia: "Carbone", macrocomponente: "Decarbonizzazione", nome: "CCS retrofit", descrizione: "Cattura post-combustione e compressione CO2.", funzione: "Riduzione emissioni lifecycle e direct stack", stato: "FOAK / pre-commerciale", ultimoAggiornamento: "2026-03-28", note: "Viabilità dipendente da carbon price adeguato" },
   // Olio
   { compId: "C-OI-001", techId: "T002", tecnologia: "Olio", macrocomponente: "Upstream", nome: "Produzione ed estrazione", descrizione: "Pozzi, gathering e separazione primaria del greggio.", funzione: "Fornitura feedstock liquidi", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-OI-003", techId: "T002", tecnologia: "Olio", macrocomponente: "Downstream", nome: "Raffinazione", descrizione: "Distillazione, cracking, hydrotreating e upgrading prodotti.", funzione: "Produzione carburanti e feedstock", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
@@ -71,14 +71,14 @@ export const componenti: Componente[] = [
   // Biomasse
   { compId: "C-BM-001", techId: "T008", tecnologia: "Biomasse", macrocomponente: "Feedstock", nome: "Biomassa solida e residui", descrizione: "Residui agricoli/forestali e coltivazioni energetiche.", funzione: "Approvvigionamento materia prima", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-BM-002", techId: "T008", tecnologia: "Biomasse", macrocomponente: "Conversione", nome: "Digestione anaerobica / biogas", descrizione: "Produzione biogas da reflui, FORSU e residui.", funzione: "Valorizzazione organica", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
-  { compId: "C-BM-003", techId: "T008", tecnologia: "Biomasse", macrocomponente: "Upgrading", nome: "Biometano / bioLNG", descrizione: "Upgrading biogas a qualita rete o carburante.", funzione: "Gas rinnovabile", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
+  { compId: "C-BM-003", techId: "T008", tecnologia: "Biomasse", macrocomponente: "Upgrading", nome: "Biometano / bioLNG", descrizione: "Upgrading biogas a qualità rete o carburante.", funzione: "Gas rinnovabile", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
   // Geotermico
   { compId: "C-GEO-001", techId: "T009", tecnologia: "Geotermico", macrocomponente: "Reservoir", nome: "Esplorazione e modellazione", descrizione: "Geofisica, geologia e reservoir simulation.", funzione: "Riduzione rischio geologico", stato: "Commerciale iniziale", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-GEO-002", techId: "T009", tecnologia: "Geotermico", macrocomponente: "Produzione", nome: "Pozzi e completamenti", descrizione: "Pozzi profondi e stimolazione per accesso al calore.", funzione: "Estrazione calore dal sottosuolo", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
   { compId: "C-GEO-003", techId: "T009", tecnologia: "Geotermico", macrocomponente: "Frontiera", nome: "EGS / closed-loop", descrizione: "Sistemi avanzati per geotermia di nuova generazione.", funzione: "Geotermia anywhere", stato: "Pilota / dimostratore", ultimoAggiornamento: "2026-03-28", note: "Potenziale di rendere la geotermia accessibile ovunque" },
   // Nucleare
   { compId: "C-NUC-001", techId: "T010", tecnologia: "Nucleare da fissione", macrocomponente: "Nuclear island", nome: "Reattore e vessel", descrizione: "Core, vessel e sistema nucleare principale.", funzione: "Fissione controllata e produzione calore", stato: "Commerciale diffusa", ultimoAggiornamento: "2026-03-28" },
-  { compId: "C-NUC-002", techId: "T010", tecnologia: "Nucleare da fissione", macrocomponente: "SMR", nome: "Small Modular Reactor", descrizione: "Reattori modulari con potenziale di deployment piu rapido.", funzione: "Generazione flessibile e modulare", stato: "FOAK / pre-commerciale", ultimoAggiornamento: "2026-03-28", note: "Primi progetti FOAK attesi operativi entro 2030" },
+  { compId: "C-NUC-002", techId: "T010", tecnologia: "Nucleare da fissione", macrocomponente: "SMR", nome: "Small Modular Reactor", descrizione: "Reattori modulari con potenziale di deployment più rapido.", funzione: "Generazione flessibile e modulare", stato: "FOAK / pre-commerciale", ultimoAggiornamento: "2026-03-28", note: "Primi progetti FOAK attesi operativi entro 2030" },
 ];
 
 // ---------- TRL / TLR (07) ----------
@@ -116,10 +116,10 @@ export const trlRecords: TRLRecord[] = [
   { techId: "T001", componente: "FGD / SCR / ESP", trl: 9, contesto: "Maturo", evidenza: "Ampiamente diffuse" },
   { techId: "T001", componente: "CCS retrofit", trl: 7, contesto: "Basso", evidenza: "Dipendente da carbon price e infrastrutture CO2" },
   // Olio
-  { techId: "T002", componente: "Raffinazione", trl: 9, contesto: "Stabile", evidenza: "Mercato legato a competitivita industriale" },
+  { techId: "T002", componente: "Raffinazione", trl: 9, contesto: "Stabile", evidenza: "Mercato legato a competitività industriale" },
   { techId: "T002", componente: "Flare and methane monitoring", trl: 8, contesto: "In crescita", evidenza: "Spinto da regolazione methane abatement" },
   // Gas Naturale
-  { techId: "T003", componente: "CCGT H/F class", trl: 9, contesto: "Stabile", evidenza: "Mercato forte come flessibilita e backup" },
+  { techId: "T003", componente: "CCGT H/F class", trl: 9, contesto: "Stabile", evidenza: "Mercato forte come flessibilità e backup" },
   { techId: "T003", componente: "CCS-ready", trl: 7, contesto: "Medio", evidenza: "Serve carbon price e transport/storage CO2" },
   { techId: "T003", componente: "Hydrogen-ready combustion", trl: 8, contesto: "In crescita", evidenza: "Segmento in espansione in Europa e Giappone" },
   // Solare Termico
@@ -165,8 +165,8 @@ export const costiRecords: CostoRecord[] = [
   // Idrogeno verde
   { techId: "T011", metrica: "CAPEX electrolyzer alkaline", valore: "700", unita: "USD/kW", anno: "2025", trend: "In calo con scala", driver: "Materiali, volumi, learning rate" },
   { techId: "T011", metrica: "CAPEX electrolyzer PEM", valore: "950", unita: "USD/kW", anno: "2025", trend: "Sopra alkaline", driver: "Iridio, produzione stack" },
-  { techId: "T011", metrica: "LCOH green hydrogen", valore: "4.5", unita: "USD/kgH2", anno: "2025", trend: "Sensibile a costo elettricita", driver: "Prezzo energia, CAPEX, load factor" },
-  { techId: "T011", metrica: "Target competitivita", valore: "1", unita: "USD/kgH2", anno: "2031", trend: "Target lungo termine", driver: "Hydrogen Shot DOE" },
+  { techId: "T011", metrica: "LCOH green hydrogen", valore: "4.5", unita: "USD/kgH2", anno: "2025", trend: "Sensibile a costo elettricità", driver: "Prezzo energia, CAPEX, load factor" },
+  { techId: "T011", metrica: "Target competitività", valore: "1", unita: "USD/kgH2", anno: "2031", trend: "Target lungo termine", driver: "Hydrogen Shot DOE" },
   // Carbone
   { techId: "T001", metrica: "CAPEX", valore: "2500-4500", unita: "EUR/kW", anno: "2025", trend: "Stabile / in calo", driver: "New build di riferimento" },
   { techId: "T001", metrica: "LCOE", valore: "90-160", unita: "EUR/MWh", anno: "2025", trend: "Volatile / site-specific", driver: "Range techno-economic" },
@@ -196,47 +196,47 @@ export interface BestPractice {
   progetto: string;
   organizzazione: string;
   descrizione: string;
-  perche: string;
+  perché: string;
   risultati: string;
   anno: string;
 }
 
 export const bestPractices: BestPractice[] = [
   // Fotovoltaico
-  { techId: "T004", paese: "EAU", progetto: "Al Dhafra Solar PV", organizzazione: "EWEC / EDF / Jinko Power", descrizione: "Mega-impianto utility-scale da circa 2 GW con moduli bifacciali.", perche: "Scala, bancabilita e tariffa estremamente competitiva.", risultati: "Tariffa record 1,32 US cent/kWh; ~160.000 abitazioni.", anno: "2023" },
-  { techId: "T004", paese: "Indonesia", progetto: "Cirata Floating PV", organizzazione: "PLN / Masdar", descrizione: "Impianto floating PV su bacino artificiale.", perche: "Integrazione FV su specchi d'acqua e scalabilita.", risultati: "145 MWac / 192 MWp; maggiore del Sud-Est asiatico.", anno: "2023" },
-  { techId: "T004", paese: "Germania", progetto: "Heggelbach APV-RESOLA", organizzazione: "Fraunhofer ISE", descrizione: "Caso pilota agrivoltaico con coltivazioni e produzione elettrica.", perche: "Valore del dual land use e resilienza colture.", risultati: "LCOE 7-12 eurocent/kWh, benefici su uso acqua.", anno: "2024" },
+  { techId: "T004", paese: "EAU", progetto: "Al Dhafra Solar PV", organizzazione: "EWEC / EDF / Jinko Power", descrizione: "Mega-impianto utility-scale da circa 2 GW con moduli bifacciali.", perché: "Scala, bancabilità e tariffa estremamente competitiva.", risultati: "Tariffa record 1,32 US cent/kWh; ~160.000 abitazioni.", anno: "2023" },
+  { techId: "T004", paese: "Indonesia", progetto: "Cirata Floating PV", organizzazione: "PLN / Masdar", descrizione: "Impianto floating PV su bacino artificiale.", perché: "Integrazione FV su specchi d'acqua e scalabilità.", risultati: "145 MWac / 192 MWp; maggiore del Sud-Est asiatico.", anno: "2023" },
+  { techId: "T004", paese: "Germania", progetto: "Heggelbach APV-RESOLA", organizzazione: "Fraunhofer ISE", descrizione: "Caso pilota agrivoltaico con coltivazioni e produzione elettrica.", perché: "Valore del dual land use e resilienza colture.", risultati: "LCOE 7-12 eurocent/kWh, benefici su uso acqua.", anno: "2024" },
   // Eolico
-  { techId: "T006", paese: "Regno Unito", progetto: "Dogger Bank", organizzazione: "SSE / Equinor", descrizione: "Progetto offshore in tre fasi, piu grande al mondo.", perche: "Scala multi-GW, supply chain complessa, turbine grandi.", risultati: "Riferimento globale per scala e integrazione offshore.", anno: "2025" },
-  { techId: "T006", paese: "Norvegia", progetto: "Hywind Tampen", organizzazione: "Equinor", descrizione: "Primo parco eolico floating per installazioni offshore.", perche: "Transizione floating da dimostrazione a operativo.", risultati: "Riferimento mondiale floating offshore.", anno: "2023" },
-  { techId: "T006", paese: "Paesi Bassi", progetto: "Hollandse Kust Zuid", organizzazione: "Vattenfall / BASF", descrizione: "Grande parco offshore sviluppato senza sussidi diretti.", perche: "Competitivita e bancabilita in mercato maturo.", risultati: "Primo grande offshore subsidy-free; 139 turbine da 11 MW.", anno: "2024" },
+  { techId: "T006", paese: "Regno Unito", progetto: "Dogger Bank", organizzazione: "SSE / Equinor", descrizione: "Progetto offshore in tre fasi, più grande al mondo.", perché: "Scala multi-GW, supply chain complessa, turbine grandi.", risultati: "Riferimento globale per scala e integrazione offshore.", anno: "2025" },
+  { techId: "T006", paese: "Norvegia", progetto: "Hywind Tampen", organizzazione: "Equinor", descrizione: "Primo parco eolico floating per installazioni offshore.", perché: "Transizione floating da dimostrazione a operativo.", risultati: "Riferimento mondiale floating offshore.", anno: "2023" },
+  { techId: "T006", paese: "Paesi Bassi", progetto: "Hollandse Kust Zuid", organizzazione: "Vattenfall / BASF", descrizione: "Grande parco offshore sviluppato senza sussidi diretti.", perché: "Competitivita e bancabilità in mercato maturo.", risultati: "Primo grande offshore subsidy-free; 139 turbine da 11 MW.", anno: "2024" },
   // Idrogeno verde
-  { techId: "T011", paese: "Arabia Saudita", progetto: "NEOM Green Hydrogen", organizzazione: "NGHC / Air Products / ACWA Power", descrizione: "Mega-progetto con ~4 GW rinnovabili e ammoniaca verde.", perche: "Frontiera della scala industriale e export molecole verdi.", risultati: "Target fino a 1,2 Mt/anno di green ammonia.", anno: "2026" },
-  { techId: "T011", paese: "Svezia", progetto: "HYBRIT", organizzazione: "SSAB / LKAB / Vattenfall", descrizione: "Uso di idrogeno per siderurgia fossil-free.", perche: "Ruolo del vettore nei settori hard-to-abate.", risultati: "Riduzione significativa emissioni siderurgia svedese.", anno: "2025" },
-  { techId: "T011", paese: "Spagna", progetto: "Puertollano green hydrogen", organizzazione: "Iberdrola / Fertiberia", descrizione: "Impianto integrato PV+battery+electrolyzer.", perche: "Integrazione rinnovabili, accumulo ed elettrolisi.", risultati: "100 MW PV, 20 MW elettrolizzatore, 5 MW/20 MWh batteria.", anno: "2024" },
+  { techId: "T011", paese: "Arabia Saudita", progetto: "NEOM Green Hydrogen", organizzazione: "NGHC / Air Products / ACWA Power", descrizione: "Mega-progetto con ~4 GW rinnovabili e ammoniaca verde.", perché: "Frontiera della scala industriale e export molecole verdi.", risultati: "Target fino a 1,2 Mt/anno di green ammonia.", anno: "2026" },
+  { techId: "T011", paese: "Svezia", progetto: "HYBRIT", organizzazione: "SSAB / LKAB / Vattenfall", descrizione: "Uso di idrogeno per siderurgia fossil-free.", perché: "Ruolo del vettore nei settori hard-to-abate.", risultati: "Riduzione significativa emissioni siderurgia svedese.", anno: "2025" },
+  { techId: "T011", paese: "Spagna", progetto: "Puertollano green hydrogen", organizzazione: "Iberdrola / Fertiberia", descrizione: "Impianto integrato PV+battery+electrolyzer.", perché: "Integrazione rinnovabili, accumulo ed elettrolisi.", risultati: "100 MW PV, 20 MW elettrolizzatore, 5 MW/20 MWh batteria.", anno: "2024" },
   // Carbone
-  { techId: "T001", paese: "Giappone", progetto: "Isogo New Units", organizzazione: "JERA", descrizione: "Impianto ultrasupercritico con alti standard ambientali.", perche: "Benchmark efficienza e controllo emissioni.", risultati: "Efficienza netta ~45% HHV, basse emissioni locali.", anno: "2023" },
-  { techId: "T001", paese: "Canada", progetto: "Boundary Dam Unit 3 CCS", organizzazione: "SaskPower", descrizione: "Primo grande CCS su unita coal.", perche: "Integrazione impianto + trasporto/stoccaggio CO2.", risultati: "Esperienza pluriennale CCS commerciale.", anno: "2020" },
+  { techId: "T001", paese: "Giappone", progetto: "Isogo New Units", organizzazione: "JERA", descrizione: "Impianto ultrasupercritico con alti standard ambientali.", perché: "Benchmark efficienza e controllo emissioni.", risultati: "Efficienza netta ~45% HHV, basse emissioni locali.", anno: "2023" },
+  { techId: "T001", paese: "Canada", progetto: "Boundary Dam Unit 3 CCS", organizzazione: "SaskPower", descrizione: "Primo grande CCS su unità coal.", perché: "Integrazione impianto + trasporto/stoccaggio CO2.", risultati: "Esperienza pluriennale CCS commerciale.", anno: "2020" },
   // Gas Naturale
-  { techId: "T003", paese: "Regno Unito", progetto: "Keadby 2", organizzazione: "SSE Thermal", descrizione: "CCGT di nuova generazione ad alta efficienza.", perche: "Benchmark europeo efficienza e fast response.", risultati: "Capacita >800 MW e avvio flessibile.", anno: "2024" },
-  { techId: "T003", paese: "USA", progetto: "NET Power La Porte", organizzazione: "NET Power", descrizione: "Ciclo innovativo a gas con cattura CO2 integrata.", perche: "Frontiera low-carbon dispatchable.", risultati: "Architettura Allam-Fetvedt con CO2 ad alta purezza.", anno: "2025" },
+  { techId: "T003", paese: "Regno Unito", progetto: "Keadby 2", organizzazione: "SSE Thermal", descrizione: "CCGT di nuova generazione ad alta efficienza.", perché: "Benchmark europeo efficienza e fast response.", risultati: "Capacita >800 MW e avvio flessibile.", anno: "2024" },
+  { techId: "T003", paese: "USA", progetto: "NET Power La Porte", organizzazione: "NET Power", descrizione: "Ciclo innovativo a gas con cattura CO2 integrata.", perché: "Frontiera low-carbon dispatchable.", risultati: "Architettura Allam-Fetvedt con CO2 ad alta purezza.", anno: "2025" },
   // Solare Termico
-  { techId: "T005", paese: "EAU", progetto: "Noor Energy 1", organizzazione: "DEWA", descrizione: "Grande CSP+PV con storage termico su scala utility.", perche: "Dispatchability e scala in area MENA.", risultati: "Tower + parabolic trough con accumulo di lunga durata.", anno: "2024" },
-  { techId: "T005", paese: "Cile", progetto: "Cerro Dominador", organizzazione: "Cerro Dominador", descrizione: "Impianto tower CSP con ~17,5 ore di storage.", perche: "Generazione serale/notturna in Sud America.", risultati: "Storage di lunga durata e integrazione nel sistema cileno.", anno: "2023" },
+  { techId: "T005", paese: "EAU", progetto: "Noor Energy 1", organizzazione: "DEWA", descrizione: "Grande CSP+PV con storage termico su scala utility.", perché: "Dispatchability e scala in area MENA.", risultati: "Tower + parabolic trough con accumulo di lunga durata.", anno: "2024" },
+  { techId: "T005", paese: "Cile", progetto: "Cerro Dominador", organizzazione: "Cerro Dominador", descrizione: "Impianto tower CSP con ~17,5 ore di storage.", perché: "Generazione serale/notturna in Sud America.", risultati: "Storage di lunga durata e integrazione nel sistema cileno.", anno: "2023" },
   // Idroelettrico
-  { techId: "T007", paese: "Svizzera", progetto: "Nant de Drance", organizzazione: "Nant de Drance", descrizione: "Pumped storage alpino di nuova generazione.", perche: "Flessibilita a supporto di VRE europee.", risultati: "Storage e dispatch rapido in sistema interconnesso.", anno: "2023" },
-  { techId: "T007", paese: "USA", progetto: "Bath County Pumped Storage", organizzazione: "Dominion Energy", descrizione: "Grande impianto di pompaggio per bilanciamento rete.", perche: "Best practice storage idroelettrico.", risultati: "Elevata potenza e rapidita di modulazione.", anno: "2020" },
+  { techId: "T007", paese: "Svizzera", progetto: "Nant de Drance", organizzazione: "Nant de Drance", descrizione: "Pumped storage alpino di nuova generazione.", perché: "Flessibilita a supporto di VRE europee.", risultati: "Storage e dispatch rapido in sistema interconnesso.", anno: "2023" },
+  { techId: "T007", paese: "USA", progetto: "Bath County Pumped Storage", organizzazione: "Dominion Energy", descrizione: "Grande impianto di pompaggio per bilanciamento rete.", perché: "Best practice storage idroelettrico.", risultati: "Elevata potenza e rapidità di modulazione.", anno: "2020" },
   // Biomasse
-  { techId: "T008", paese: "Svezia", progetto: "Vartan bioenergy CHP", organizzazione: "Stockholm Exergi", descrizione: "Grande uso biomassa per elettricita e calore urbano.", perche: "Integrazione con district heating.", risultati: "Alta efficienza complessiva in CHP.", anno: "2023" },
-  { techId: "T008", paese: "Germania", progetto: "VERBIO biomethane", organizzazione: "VERBIO", descrizione: "Integrazione avanzata feedstock agricoli e biometano.", perche: "Gas rinnovabili e uso trasporti.", risultati: "Produzione integrata biomethane e bioLNG.", anno: "2024" },
+  { techId: "T008", paese: "Svezia", progetto: "Vartan bioenergy CHP", organizzazione: "Stockholm Exergi", descrizione: "Grande uso biomassa per elettricità e calore urbano.", perché: "Integrazione con district heating.", risultati: "Alta efficienza complessiva in CHP.", anno: "2023" },
+  { techId: "T008", paese: "Germania", progetto: "VERBIO biomethane", organizzazione: "VERBIO", descrizione: "Integrazione avanzata feedstock agricoli e biometano.", perché: "Gas rinnovabili e uso trasporti.", risultati: "Produzione integrata biomethane e bioLNG.", anno: "2024" },
   // Geotermico
-  { techId: "T009", paese: "USA", progetto: "Cape Station / Fervo", organizzazione: "Fervo Energy", descrizione: "Progetto next-gen basato su drilling orizzontale.", perche: "EGS / geothermal 2.0.", risultati: "Riduzione rischio e scalabilita tramite tecniche oilfield.", anno: "2025" },
-  { techId: "T009", paese: "Islanda", progetto: "Hellisheidi", organizzazione: "ON Power", descrizione: "Impianto integrato power+heat con mineralizzazione CO2.", perche: "Integrazione energetica e sostenibilita.", risultati: "Elettricita, calore e progetti CarbFix.", anno: "2023" },
+  { techId: "T009", paese: "USA", progetto: "Cape Station / Fervo", organizzazione: "Fervo Energy", descrizione: "Progetto next-gen basato su drilling orizzontale.", perché: "EGS / geothermal 2.0.", risultati: "Riduzione rischio e scalabilità tramite tecniche oilfield.", anno: "2025" },
+  { techId: "T009", paese: "Islanda", progetto: "Hellisheidi", organizzazione: "ON Power", descrizione: "Impianto integrato power+heat con mineralizzazione CO2.", perché: "Integrazione energetica e sostenibilità.", risultati: "Elettricita, calore e progetti CarbFix.", anno: "2023" },
   // Nucleare
-  { techId: "T010", paese: "EAU", progetto: "Barakah", organizzazione: "ENEC", descrizione: "Nuovo programma nucleare nazionale completato.", perche: "Programme execution e nuovo build.", risultati: "Quattro unita APR1400 in esercizio.", anno: "2024" },
-  { techId: "T010", paese: "USA", progetto: "Vogtle 3 and 4", organizzazione: "Georgia Power", descrizione: "Primi nuovi AP1000 operativi negli USA.", perche: "Lesson learned per new build occidentale.", risultati: "Due nuove unita in esercizio 2023-2024.", anno: "2024" },
+  { techId: "T010", paese: "EAU", progetto: "Barakah", organizzazione: "ENEC", descrizione: "Nuovo programma nucleare nazionale completato.", perché: "Programme execution e nuovo build.", risultati: "Quattro unità APR1400 in esercizio.", anno: "2024" },
+  { techId: "T010", paese: "USA", progetto: "Vogtle 3 and 4", organizzazione: "Georgia Power", descrizione: "Primi nuovi AP1000 operativi negli USA.", perché: "Lesson learned per new build occidentale.", risultati: "Due nuove unità in esercizio 2023-2024.", anno: "2024" },
   // Olio
-  { techId: "T002", paese: "Finlandia", progetto: "Porvoo transformation", organizzazione: "Neste", descrizione: "Trasformazione sito verso prodotti a minore intensita carbonica.", perche: "Riconversione industriale filiera oil.", risultati: "Roadmap trasformazione e prodotti alternativi.", anno: "2024" },
+  { techId: "T002", paese: "Finlandia", progetto: "Porvoo transformation", organizzazione: "Neste", descrizione: "Trasformazione sito verso prodotti a minore intensita carbonica.", perché: "Riconversione industriale filiera oil.", risultati: "Roadmap trasformazione e prodotti alternativi.", anno: "2024" },
 ];
 
 // ---------- POLICY E REGOLAZIONE (12) ----------
@@ -260,7 +260,7 @@ export const policyRecords: PolicyRecord[] = [
   { techId: "T006", giurisdizione: "UE", tipo: "Piano", titolo: "European Wind Power Action Plan", stato: "Attivo", impatto: "Interviene su aste, supply chain, permitting e competenze." },
   { techId: "T006", giurisdizione: "Italia", tipo: "Programma", titolo: "MASE - Eolico Offshore", stato: "Attivo", impatto: "Orienta sviluppo nazionale offshore e floating." },
   // Idrogeno verde
-  { techId: "T011", giurisdizione: "UE", tipo: "Atto delegato", titolo: "Renewable hydrogen rules RFNBO", stato: "Applicabile", impatto: "Criteri addizionalita, correlazione temporale, soglie GHG." },
+  { techId: "T011", giurisdizione: "UE", tipo: "Atto delegato", titolo: "Renewable hydrogen rules RFNBO", stato: "Applicabile", impatto: "Criteri addizionalità, correlazione temporale, soglie GHG." },
   { techId: "T011", giurisdizione: "UE", tipo: "Incentivo", titolo: "European Hydrogen Bank", stato: "Attivo", impatto: "Aste e premi alla produzione per market creation." },
   { techId: "T011", giurisdizione: "Italia", tipo: "Strategia", titolo: "Strategia Nazionale Idrogeno", stato: "Pubblicata", impatto: "Traiettorie di sviluppo al 2030-2050." },
   { techId: "T011", giurisdizione: "Italia", tipo: "PNRR", titolo: "Hydrogen Valleys", stato: "Attivo", impatto: "Cluster territoriali e primi ecosistemi H2." },
@@ -268,7 +268,7 @@ export const policyRecords: PolicyRecord[] = [
   { techId: "T001", giurisdizione: "UE", tipo: "ETS", titolo: "EU ETS e phase-out nazionali", stato: "In vigore", impatto: "Alza costo CO2 e accelera uscita dal carbone." },
   { techId: "T001", giurisdizione: "Globale", tipo: "Incentivo CCS", titolo: "CCfD/45Q e supporti CCUS", stato: "In sviluppo", impatto: "Solo con forte supporto il coal+CCS torna bancabile." },
   // Gas Naturale
-  { techId: "T003", giurisdizione: "UE", tipo: "Tassonomia", titolo: "Complementary Climate Delegated Act", stato: "In vigore", impatto: "Solo alcune attivita gas classificate transitorie." },
+  { techId: "T003", giurisdizione: "UE", tipo: "Tassonomia", titolo: "Complementary Climate Delegated Act", stato: "In vigore", impatto: "Solo alcune attività gas classificate transitorie." },
   { techId: "T003", giurisdizione: "UE", tipo: "Regolazione", titolo: "Methane abatement", stato: "In vigore", impatto: "Monitoraggio perdite e tracciabilita filiera gas." },
   // Solare Termico
   { techId: "T005", giurisdizione: "UE", tipo: "Direttiva", titolo: "RED III", stato: "In vigore", impatto: "Supporta FER termiche e calore rinnovabile." },
@@ -276,14 +276,14 @@ export const policyRecords: PolicyRecord[] = [
   // Idroelettrico
   { techId: "T007", giurisdizione: "Italia", tipo: "Concessioni", titolo: "Quadro concessorio e rinnovi", stato: "In evoluzione", impatto: "Rilevante per revamping e investimenti." },
   // Biomasse
-  { techId: "T008", giurisdizione: "UE", tipo: "Direttiva", titolo: "RED III - criteri sostenibilita biomass", stato: "In vigore", impatto: "Stringe requisiti feedstock, efficienza, GHG savings." },
+  { techId: "T008", giurisdizione: "UE", tipo: "Direttiva", titolo: "RED III - criteri sostenibilità biomass", stato: "In vigore", impatto: "Stringe requisiti feedstock, efficienza, GHG savings." },
   { techId: "T008", giurisdizione: "Italia", tipo: "Incentivo", titolo: "GSE Biometano / PNRR", stato: "Attivo", impatto: "Traino forte su digestione anaerobica e grid injection." },
   // Geotermico
   { techId: "T009", giurisdizione: "Italia", tipo: "Incentivo", titolo: "FER2 e strumenti geotermia innovativa", stato: "Attivo", impatto: "Sostiene geotermia innovativa e a basse emissioni." },
   // Nucleare
   { techId: "T010", giurisdizione: "UE", tipo: "Tassonomia", titolo: "EU Taxonomy - condizioni specifiche", stato: "In vigore", impatto: "Condizionatamente allineata sotto criteri specifici." },
   // Olio
-  { techId: "T002", giurisdizione: "UE", tipo: "Tassonomia", titolo: "EU Taxonomy", stato: "In vigore", impatto: "Nuove attivita oil non qualificate come sostenibili." },
+  { techId: "T002", giurisdizione: "UE", tipo: "Tassonomia", titolo: "EU Taxonomy", stato: "In vigore", impatto: "Nuove attività oil non qualificate come sostenibili." },
   { techId: "T002", giurisdizione: "Globale", tipo: "Methane", titolo: "Iniziative methane abatement", stato: "In sviluppo", impatto: "Spingono sensoristica, LDAR e riduzione flaring." },
 ];
 
@@ -302,25 +302,25 @@ export const barriereRecords: BarrieraRecord[] = [
   // Fotovoltaico
   { techId: "T004", categoria: "Regolatoria", tipo: "Barriera", titolo: "Permitting e uso del suolo", descrizione: "Tempi autorizzativi e conflitti territoriali rallentano utility-scale.", severita: "Alta", mitigazione: "Aree idonee, semplificare permitting, engagement locale." },
   { techId: "T004", categoria: "Supply chain", tipo: "Barriera", titolo: "Dipendenza da supply chain estere", descrizione: "Filiera europea esposta a concentrazione geografica.", severita: "Alta", mitigazione: "Riciclo, reshoring/nearshoring, strumenti NZIA." },
-  { techId: "T004", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Tandem perovskite-silicio", descrizione: "Potenziale >30% efficienza ma da validare.", severita: "Media-alta", mitigazione: "Piloti, test durabilita, horizon scanning." },
+  { techId: "T004", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Tandem perovskite-silicio", descrizione: "Potenziale >30% efficienza ma da validare.", severita: "Media-alta", mitigazione: "Piloti, test durabilità, horizon scanning." },
   { techId: "T004", categoria: "Sociale", tipo: "Opportunita", titolo: "Agrivoltaico", descrizione: "Riduce conflitto uso del suolo e crea valore agricolo.", severita: "Media", mitigazione: "Standard progettuali e strumenti di supporto." },
   // Eolico
-  { techId: "T006", categoria: "Regolatoria", tipo: "Barriera", titolo: "Permitting e accettabilita locale", descrizione: "Iter autorizzativi lunghi e opposizioni territoriali.", severita: "Alta", mitigazione: "Semplificare permitting, aree idonee, qualita progettuale." },
+  { techId: "T006", categoria: "Regolatoria", tipo: "Barriera", titolo: "Permitting e accettabilità locale", descrizione: "Iter autorizzativi lunghi e opposizioni territoriali.", severita: "Alta", mitigazione: "Semplificare permitting, aree idonee, qualità progettuale." },
   { techId: "T006", categoria: "Supply chain", tipo: "Barriera", titolo: "Materiali, logistica e componenti oversize", descrizione: "Pale lunghe, torri alte e navi specializzate.", severita: "Alta", mitigazione: "Filiere, porti, standard modulari." },
-  { techId: "T006", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Floating offshore", descrizione: "Accesso a risorse in acque profonde.", severita: "Alta priorita", mitigazione: "Dimostratori, aste dedicate, industrializzazione." },
+  { techId: "T006", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Floating offshore", descrizione: "Accesso a risorse in acque profonde.", severita: "Alta priorità", mitigazione: "Dimostratori, aste dedicate, industrializzazione." },
   // Idrogeno verde
-  { techId: "T011", categoria: "Economica", tipo: "Barriera", titolo: "Costo ancora elevato", descrizione: "Business case fragile senza elettricita low-cost e supporti.", severita: "Alta", mitigazione: "PPA low-cost, scala, aste dedicate." },
+  { techId: "T011", categoria: "Economica", tipo: "Barriera", titolo: "Costo ancora elevato", descrizione: "Business case fragile senza elettricità low-cost e supporti.", severita: "Alta", mitigazione: "PPA low-cost, scala, aste dedicate." },
   { techId: "T011", categoria: "Infrastrutturale", tipo: "Barriera", titolo: "Trasporto e off-take insufficienti", descrizione: "Reti, stoccaggi e domanda limitati.", severita: "Alta", mitigazione: "Cluster, hydrogen valleys, offtake contracts." },
-  { techId: "T011", categoria: "Opportunita", tipo: "Opportunita", titolo: "Early market in cluster industriali", descrizione: "Raffinerie, ammoniaca, acciaio come primi segmenti.", severita: "Alta priorita", mitigazione: "Hub industriali e alta willingness-to-pay." },
+  { techId: "T011", categoria: "Opportunita", tipo: "Opportunita", titolo: "Early market in cluster industriali", descrizione: "Raffinerie, ammoniaca, acciaio come primi segmenti.", severita: "Alta priorità", mitigazione: "Hub industriali e alta willingness-to-pay." },
   // Carbone
-  { techId: "T001", categoria: "Regolatoria", tipo: "Barriera", titolo: "Carbon pricing e phase-out", descrizione: "Esposizione a ETS riduce bancabilita.", severita: "Alta", mitigazione: "Gestione transizione, CCS in cluster." },
+  { techId: "T001", categoria: "Regolatoria", tipo: "Barriera", titolo: "Carbon pricing e phase-out", descrizione: "Esposizione a ETS riduce bancabilità.", severita: "Alta", mitigazione: "Gestione transizione, CCS in cluster." },
   { techId: "T001", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Flessibilizzazione / repurposing siti", descrizione: "Siti coal possono ospitare storage, CCS o nuove tech.", severita: "Media", mitigazione: "Strategie di riconversione." },
   // Gas Naturale
   { techId: "T003", categoria: "Regolatoria", tipo: "Barriera", titolo: "Lock-in carbonico", descrizione: "Rischio lock-in limita orizzonte nuovi asset.", severita: "Alta", mitigazione: "Impianti flessibili, CCS-ready, H2-ready." },
-  { techId: "T003", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Ruolo di flessibilita", descrizione: "Gas efficiente supporta penetrazione FER nel transitorio.", severita: "Alta", mitigazione: "Ottimizzare dispatch e ancillary services." },
+  { techId: "T003", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Ruolo di flessibilità", descrizione: "Gas efficiente supporta penetrazione FER nel transitorio.", severita: "Alta", mitigazione: "Ottimizzare dispatch e ancillary services." },
   // Solare Termico
   { techId: "T005", categoria: "Economica", tipo: "Barriera", titolo: "CAPEX elevato", descrizione: "Costo iniziale molto superiore al FV.", severita: "Alta", mitigazione: "Target aree ad alta DNI, valorizzazione storage." },
-  { techId: "T005", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Calore industriale e thermal storage", descrizione: "Puo coprire bisogni difficili da elettrificare.", severita: "Alta", mitigazione: "Cluster industriali, reti termiche." },
+  { techId: "T005", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Calore industriale e thermal storage", descrizione: "Può coprire bisogni difficili da elettrificare.", severita: "Alta", mitigazione: "Cluster industriali, reti termiche." },
   // Idroelettrico
   { techId: "T007", categoria: "Regolatoria", tipo: "Barriera", titolo: "Permitting e biodiversita", descrizione: "Iter lunghi e requisiti ambientali stringenti.", severita: "Alta", mitigazione: "Priorita a repowering e PSH." },
   { techId: "T007", categoria: "Climatica", tipo: "Barriera", titolo: "Rischio idrologico", descrizione: "Siccita e variabilita climatica.", severita: "Alta", mitigazione: "Diversificazione portafoglio e digital hydrology." },
@@ -331,7 +331,7 @@ export const barriereRecords: BarrieraRecord[] = [
   { techId: "T009", categoria: "Tecnologica", tipo: "Opportunita", titolo: "EGS e geotermia 2.0", descrizione: "Tecniche oilfield aprono nuovo potenziale.", severita: "Alta", mitigazione: "Finanziare piloti e dimostrativi." },
   // Nucleare
   { techId: "T010", categoria: "Economica", tipo: "Barriera", titolo: "CAPEX e tempi di costruzione", descrizione: "Forte intensita di capitale e rischi di ritardo.", severita: "Alta", mitigazione: "Standardizzazione, SMR, project management." },
-  { techId: "T010", categoria: "Tecnologica", tipo: "Opportunita", titolo: "SMR come opzione modulare", descrizione: "Potenziale per deployment piu rapido.", severita: "Media-alta", mitigazione: "Licensing, first-of-a-kind projects." },
+  { techId: "T010", categoria: "Tecnologica", tipo: "Opportunita", titolo: "SMR come opzione modulare", descrizione: "Potenziale per deployment più rapido.", severita: "Media-alta", mitigazione: "Licensing, first-of-a-kind projects." },
   // Olio
   { techId: "T002", categoria: "Ambientale", tipo: "Barriera", titolo: "Sversamenti, flare, methane", descrizione: "Rischi ambientali e reputazionali.", severita: "Alta", mitigazione: "LDAR, flare minimization, water management." },
   { techId: "T002", categoria: "Tecnologica", tipo: "Opportunita", titolo: "Riconversione industriale", descrizione: "Siti oil possono evolvere in bioraffinerie.", severita: "Media", mitigazione: "Piani di trasformazione e CAPEX selettivo." },
@@ -399,7 +399,7 @@ export const prestazioniRecords: PrestazioneRecord[] = [
   // Carbone
   { techId: "T001", kpi: "Efficienza netta USC", valore: "45", unita: "%", benchmark: "~45% HHV" },
   { techId: "T001", kpi: "Emissioni dirette stack", valore: "900", unita: "gCO2/kWh", benchmark: ">800 senza CCS" },
-  { techId: "T001", kpi: "Fattore di capacita", valore: "70", unita: "%", benchmark: "50-85%" },
+  { techId: "T001", kpi: "Fattore di capacità", valore: "70", unita: "%", benchmark: "50-85%" },
   // Olio
   { techId: "T002", kpi: "Efficienza energetica raffinazione", valore: "88", unita: "%", benchmark: "Varia per schema impianto" },
   { techId: "T002", kpi: "Emissioni dirette oil-fired", valore: "700", unita: "gCO2/kWh", benchmark: "650-900" },
@@ -420,7 +420,7 @@ export const prestazioniRecords: PrestazioneRecord[] = [
   { techId: "T009", kpi: "Capacity factor", valore: "85-95", unita: "%", benchmark: "Molto alto, programmabile" },
   // Nucleare
   { techId: "T010", kpi: "Emissioni lifecycle", valore: "12", unita: "gCO2e/kWh", benchmark: "Molto basse" },
-  { techId: "T010", kpi: "Capacity factor", valore: "90", unita: "%", benchmark: "Tra i piu alti" },
+  { techId: "T010", kpi: "Capacity factor", valore: "90", unita: "%", benchmark: "Tra i più alti" },
 ];
 
 // ---------- SETTORI DI IMPATTO (09) ----------
@@ -450,7 +450,7 @@ export const settoriImpatto: SettoreImpatto[] = [
   { techId: "T001", settore: "Industria", casoUso: "Siderurgia, cemento, vapore industriale", tipoImpatto: "Alta intensita energetica", intensita: "Alta" },
   { techId: "T001", settore: "Utility", casoUso: "Baseload in sistemi carbon-intensive", tipoImpatto: "Generazione elettrica", intensita: "Alta" },
   // Gas Naturale
-  { techId: "T003", settore: "Utility", casoUso: "Bilanciamento e capacita programmabile", tipoImpatto: "Flessibilita di sistema", intensita: "Alta" },
+  { techId: "T003", settore: "Utility", casoUso: "Bilanciamento e capacità programmabile", tipoImpatto: "Flessibilita di sistema", intensita: "Alta" },
   { techId: "T003", settore: "Industria", casoUso: "Calore di processo e cogenerazione", tipoImpatto: "Calore industriale", intensita: "Alta" },
   // Solare Termico
   { techId: "T005", settore: "Industria", casoUso: "Solar process heat", tipoImpatto: "Decarbonizzazione calore", intensita: "Alta" },
@@ -462,7 +462,7 @@ export const settoriImpatto: SettoreImpatto[] = [
   { techId: "T008", settore: "Calore", casoUso: "CHP e district heating", tipoImpatto: "Decarbonizzazione calore", intensita: "Alta" },
   { techId: "T008", settore: "Trasporti", casoUso: "Biometano, bioLNG", tipoImpatto: "Gas rinnovabili", intensita: "Media" },
   // Geotermico
-  { techId: "T009", settore: "Utility", casoUso: "Generazione baseload", tipoImpatto: "Programmabile, alta disponibilita", intensita: "Alta" },
+  { techId: "T009", settore: "Utility", casoUso: "Generazione baseload", tipoImpatto: "Programmabile, alta disponibilità", intensita: "Alta" },
   { techId: "T009", settore: "Edilizia", casoUso: "Reti termiche, teleriscaldamento", tipoImpatto: "Calore locale", intensita: "Media" },
   // Nucleare
   { techId: "T010", settore: "Utility", casoUso: "Generazione baseload basse emissioni", tipoImpatto: "Decarbonizzazione su larga scala", intensita: "Alta" },
@@ -482,7 +482,7 @@ export interface SostenibilitaRecord {
   altriImpatti: string;
 }
 
-export const sostenibilitaRecords: SostenibilitaRecord[] = [
+export const sostenibilitàRecords: SostenibilitaRecord[] = [
   { techId: "T004", lcaDisponibile: "Si", emissioniGHG: "23", unitaGHG: "gCO2e/kWh", tassonomiaUE: "Allineata", altriImpatti: "Materie prime critiche, fine vita moduli" },
   { techId: "T006", lcaDisponibile: "Si", emissioniGHG: "12", unitaGHG: "gCO2e/kWh", tassonomiaUE: "Allineata", altriImpatti: "Impatto paesaggistico, riciclo pale" },
   { techId: "T011", lcaDisponibile: "Parziale", emissioniGHG: "Dipende da input", unitaGHG: "kgCO2e/kgH2", tassonomiaUE: "Allineabile", altriImpatti: "Consumo acqua, materiali critici per PEM" },
@@ -508,6 +508,6 @@ export function getTech360(techId: string) {
     attori: attoriRecords.filter(r => r.techId === techId),
     prestazioni: prestazioniRecords.filter(r => r.techId === techId),
     settori: settoriImpatto.filter(r => r.techId === techId),
-    sostenibilita: sostenibilitaRecords.find(r => r.techId === techId),
+    sostenibilità: sostenibilitàRecords.find(r => r.techId === techId),
   };
 }

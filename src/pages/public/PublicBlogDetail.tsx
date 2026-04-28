@@ -3,7 +3,19 @@ import { SectionHeader } from "../../components/shared/SectionHeader";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
-import { publicArticles } from "../../data/mockData";
+import { publicArticles, publicReports } from "../../data/mockData";
+
+const allPublications = [...publicArticles, ...publicReports];
+
+const typeBadgeColor = (type: string) => {
+  switch (type) {
+    case "Report": return "bg-blue-100 text-blue-800";
+    case "Policy brief": return "bg-violet-100 text-violet-800";
+    case "Blog article": return "bg-emerald-100 text-emerald-800";
+    case "Focus tematico": return "bg-amber-100 text-amber-800";
+    default: return "bg-slate-100 text-slate-700";
+  }
+};
 
 type PublicBlogDetailProps = {
   articleSlug: string | null;
@@ -11,16 +23,16 @@ type PublicBlogDetailProps = {
 };
 
 export function PublicBlogDetail({ articleSlug, onBack }: PublicBlogDetailProps) {
-  const article = publicArticles.find((item) => item.slug === articleSlug);
+  const article = allPublications.find((item) => item.slug === articleSlug);
 
   if (!article) {
     return (
       <div className="space-y-6">
         <SectionHeader
-          eyebrow="Blog pubblico"
-          title="Articolo non trovato"
-          text="L'articolo richiesto non e disponibile. Torna all'elenco per selezionare un contenuto valido."
-          action={<Button variant="outline" className="rounded-2xl" onClick={onBack}><ArrowLeft className="h-4 w-4" /> Torna al blog</Button>}
+          eyebrow="Pubblicazioni"
+          title="Pubblicazione non trovata"
+          text="Il contenuto richiesto non e disponibile. Torna all'elenco per selezionare una pubblicazione valida."
+          action={<Button variant="outline" className="rounded-2xl" onClick={onBack}><ArrowLeft className="h-4 w-4" /> Torna alle pubblicazioni</Button>}
         />
       </div>
     );
@@ -29,16 +41,16 @@ export function PublicBlogDetail({ articleSlug, onBack }: PublicBlogDetailProps)
   return (
     <div className="space-y-8">
       <SectionHeader
-        eyebrow="Dettaglio articolo"
+        eyebrow="Dettaglio pubblicazione"
         title={article.title}
         text={article.excerpt}
-        action={<Button variant="outline" className="rounded-2xl" onClick={onBack}><ArrowLeft className="h-4 w-4" /> Torna al blog</Button>}
+        action={<Button variant="outline" className="rounded-2xl" onClick={onBack}><ArrowLeft className="h-4 w-4" /> Torna alle pubblicazioni</Button>}
       />
 
       <Card className="rounded-[28px] shadow-sm">
         <CardContent className="space-y-6 p-6 md:p-8">
           <div className="flex flex-wrap items-center gap-2 text-sm text-slate-500">
-            <Badge className="rounded-full bg-slate-100 text-slate-700 hover:bg-slate-100">{article.type}</Badge>
+            <Badge className={`rounded-full ${typeBadgeColor(article.type)} hover:opacity-90`}>{article.type}</Badge>
             <Badge variant="outline" className="rounded-full">{article.audience}</Badge>
             <Badge variant="outline" className="rounded-full">{article.topic}</Badge>
             <span className="ml-2">{article.date}</span>

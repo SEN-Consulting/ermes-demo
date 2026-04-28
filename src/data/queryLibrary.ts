@@ -111,7 +111,7 @@ export const queryLibrary: QueryTemplate[] = [
     template: '"Generation IV" nuclear reactor OR Gen IV reactor OR molten salt reactor OR sodium fast reactor OR high-temperature gas reactor',
     richiede_tecnologia: false,
     focusPvs: false,
-    uso: "Esempio pronto per il caso d'uso su nucleare di IV generazione.",
+    uso: "Query dedicata al caso d'uso su nucleare di IV generazione.",
   },
   {
     queryId: "Q012",

@@ -209,7 +209,7 @@ export function EditorialPanel() {
         contentParagraphs.push(para);
       }
       contentParagraphs.push(
-        "Dal punto di vista operativo, i segnali raccolti confermano la necessita di monitorare l'evoluzione regolatoria e di valutare i tempi di deployment delle soluzioni tecnologiche piu promettenti.",
+        "Dal punto di vista operativo, i segnali raccolti confermano la necessità di monitorare l'evoluzione regolatoria e di valutare i tempi di deployment delle soluzioni tecnologiche più promettenti.",
         "*Articolo generato dall'osservatorio ERMES a partire dalle evidenze selezionate. Richiede revisione editoriale prima della pubblicazione.*"
       );
 
@@ -226,13 +226,13 @@ export function EditorialPanel() {
         excerpt: `Contenuto generato in anteprima: una sintesi su ${title.toLowerCase()} con focus ${topic.toLowerCase()} e implicazioni per decisori e stakeholder.`,
         keyPointsText: [
           "Segnali di mercato e policy da monitorare nel breve periodo.",
-          "Impatto su competitivita, tempi di deployment e rischio operativo.",
-          "Indicazioni pratiche per priorita di investimento e governance.",
+          "Impatto su competitività, tempi di deployment e rischio operativo.",
+          "Indicazioni pratiche per priorità di investimento e governance.",
         ].join("\n"),
         contentText: [
           `Bozza AI: ${aiPrompt}`,
-          "La lettura proposta evidenzia i driver principali che stanno accelerando l'adozione delle tecnologie e i vincoli che ne limitano la scalabilita in contesti differenti.",
-          "Dal punto di vista operativo, la combinazione tra stabilita regolatoria, capacita industriale e accesso al capitale resta il fattore che distingue i progetti replicabili da quelli episodici.",
+          "La lettura proposta evidenzia i driver principali che stanno accelerando l'adozione delle tecnologie e i vincoli che ne limitano la scalabilità in contesti differenti.",
+          "Dal punto di vista operativo, la combinazione tra stabilita regolatoria, capacità industriale e accesso al capitale resta il fattore che distingue i progetti replicabili da quelli episodici.",
         ].join("\n\n"),
         slug: prev.slug || slugify(title),
       }));
@@ -271,7 +271,7 @@ export function EditorialPanel() {
           <Card className="rounded-[28px] shadow-sm">
             <CardHeader>
               <CardTitle>Lista articoli pubblicati</CardTitle>
-              <CardDescription>Ogni articolo puo essere aperto in modifica per aggiornare titolo, slug, estratto e contenuto.</CardDescription>
+              <CardDescription>Ogni articolo può essere aperto in modifica per aggiornare titolo, slug, estratto e contenuto.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
               {articles.map((article) => (

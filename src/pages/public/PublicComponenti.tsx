@@ -53,7 +53,7 @@ export function PublicComponenti({ onOpenComponente }: PublicComponentiProps) {
       <SectionHeader
         eyebrow="Componenti e sottosistemi"
         title="Anagrafica completa dei componenti tecnologici monitorati."
-        text="Ogni componente e classificato per macrocomponente, stato di maturita e funzione nel sistema tecnologico. Clicca su un componente per il dettaglio completo."
+        text="Ogni componente è classificato per macrocomponente, stato di maturità e funzione nel sistema tecnologico. Clicca su un componente per il dettaglio completo."
       />
 
       <div className="space-y-4">
