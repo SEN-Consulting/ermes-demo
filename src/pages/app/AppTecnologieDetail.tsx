@@ -283,7 +283,7 @@ export function AppTecnologieDetail({ techId, onBack, onOpenComponente }: AppTec
                 </div>
                 <p className="text-sm text-slate-600 mb-2">{bp.descrizione}</p>
                 <div className="grid gap-2 md:grid-cols-2">
-                  <div className="rounded-xl bg-slate-50 p-3 text-sm"><strong className="text-slate-700">Perché rilevante:</strong> {bp.perche}</div>
+                  <div className="rounded-xl bg-slate-50 p-3 text-sm"><strong className="text-slate-700">Perché rilevante:</strong> {bp.perché}</div>
                   <div className="rounded-xl bg-slate-50 p-3 text-sm"><strong className="text-slate-700">Risultati:</strong> {bp.risultati}</div>
                 </div>
               </div>
